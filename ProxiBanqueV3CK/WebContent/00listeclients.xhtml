@@ -5,11 +5,9 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-
-<f:view>
 	<head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Objis Formation</title>
+<title>ProxibanqueV3</title>
 	</head>
 
 	<body>
@@ -20,27 +18,27 @@
 			<ui:define name="content">
 				<body>
 					<h3 style="margin-top: 0">Liste des clients</h3>
-					<p:dataTable var="car" value="#{dtBasicView.cars}">
+					<p:dataTable var="client" value="#{clientbean.clients}">
 						<p:column headerText="Id">
-							<h:outputText value="#{car.id}" />
+							<h:outputText value="#{client.id}" />
 						</p:column>
 						<p:column headerText="Nom">
-							<h:outputText value="#{car.year}" />
+							<h:outputText value="#{client.nom}" />
 						</p:column>
 						<p:column headerText="Prenom">
-							<h:outputText value="#{car.brand}" />
+							<h:outputText value="#{client.prenom}" />
 						</p:column>
 						<p:column headerText="Adresse">
-							<h:outputText value="#{car.color}" />
+							<h:outputText value="#{client.adresse}" />
 						</p:column>
 						<p:column headerText="Email">
-							<h:outputText value="#{car.color}" />
+							<h:outputText value="#{client.email}" />
 						</p:column>
 						<p:column headerText="Solde CC">
-							<h:outputText value="#{car.color}" />
+							<h:outputText value="#{client.soldeCC}" />
 						</p:column>
 						<p:column headerText="Solde CE">
-							<h:outputText value="#{car.color}" />
+							<h:outputText value="#{client.soldeCE}" />
 						</p:column>
 					</p:dataTable>
 					<h:panelGrid columns="2" cellpadding="10">
@@ -49,28 +47,28 @@
 					</h:panelGrid>
 					<h:form id="Ajouter">
 						<h:panelGrid columns="2" cellpadding="2">
-							<h:outputLabel for="#{userManagedBean.username}" value="Nom" />
-							<h:inputText value="#{userManagedBean.username}" label="Nom" />
-							<h:outputLabel for="#{userManagedBean.username}" value="Prenom" />
-							<h:inputText value="#{userManagedBean.username}" label="Prenom" />
-							<h:outputLabel for="#{userManagedBean.username}" value="Adresse" />
-							<h:inputText value="#{userManagedBean.username}" label="Adresse" />
-							<h:outputLabel for="#{userManagedBean.username}" value="Email" />
-							<h:inputText value="#{userManagedBean.username}" label="Email" />
-							<h:outputLabel for="#{userManagedBean.username}" value="SoldeCC" />
-							<h:inputText value="#{userManagedBean.username}" label="SoldeCC" />
-							<h:outputLabel for="#{userManagedBean.username}" value="SoldeCE" />
-							<h:inputText value="#{userManagedBean.username}" label="SoldeCE" />
+							<h:outputLabel for="#{clientbean.nom}" value="Nom" />
+							<h:inputText value="#{clientbean.nom}" label="Nom" />
+							<h:outputLabel for="#{clientbean.prenom}" value="Prenom" />
+							<h:inputText value="#{clientbean.prenom}" label="Prenom" />
+							<h:outputLabel for="#{clientbean.adresse}" value="Adresse" />
+							<h:inputText value="#{clientbean.adresse}" label="Adresse" />
+							<h:outputLabel for="#{clientbean.email}" value="Email" />
+							<h:inputText value="#{clientbean.email}" label="Email" />
+							<h:outputLabel for="#{clientbean.soldeCC}" value="SoldeCC" />
+							<h:inputText value="#{clientbean.soldeCC}" label="SoldeCC" />
+							<h:outputLabel for="#{clientbean.soldeCE}" value="SoldeCE" />
+							<h:inputText value="#{clientbean.soldeCE}" label="SoldeCE" />
 						</h:panelGrid>
 						<h:commandButton type="submit" value="Ajouter"
-							action="#{userManagedBean.login}" />
+							action="#{clientbean.creer}" />
 					</h:form>
 				</body>
 			</ui:define>
 
 		</ui:composition>
 	</body>
-</f:view>
+
 </html>
 
 

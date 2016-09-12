@@ -19,49 +19,49 @@
 			<!-- Redefinition de la zone 'content' du layout  	-->
 			<ui:define name="content">
 				<body>
-					<h3 style="margin-top: 0">Liste des clients V3</h3>
-					<p:dataTable var="car" value="#{dtBasicView.cars}">
+					<h3 style="margin-top: 0">Edition Clients</h3>
+					<p:dataTable var="client" value="#{clientbean.clients}">
 						<p:column headerText="Id">
-							<h:outputText value="#{car.id}" />
+							<h:outputText value="#{client.id}" />
 						</p:column>
 						<p:column headerText="Nom">
-							<h:outputText value="#{car.year}" />
+							<h:outputText value="#{client.nom}" />
 						</p:column>
 						<p:column headerText="Prenom">
-							<h:outputText value="#{car.brand}" />
+							<h:outputText value="#{client.prenom}" />
 						</p:column>
 						<p:column headerText="Adresse">
-							<h:outputText value="#{car.color}" />
+							<h:outputText value="#{client.adresse}" />
 						</p:column>
 						<p:column headerText="Email">
-							<h:outputText value="#{car.color}" />
+							<h:outputText value="#{client.email}" />
 						</p:column>
 						<p:column headerText="Solde CC">
-							<h:outputText value="#{car.color}" />
+							<h:outputText value="#{client.soldeCC}" />
 						</p:column>
 						<p:column headerText="Solde CE">
-							<h:outputText value="#{car.color}" />
+							<h:outputText value="#{client.soldeCE}" />
 						</p:column>
 					</p:dataTable>
 					<h:panelGrid columns="2" cellpadding="10">
 						<p:graphicImage name="demo/images/godfather/godfather1.jpg" />
 						<h:outputText value="The story begins as Don Vito Corleone..." />
 					</h:panelGrid>
-					<h:form id="Ajouter">
+					<h:form id="MAJ">
 						<h:panelGrid columns="2" cellpadding="2">
-							<h:outputLabel for="#{userManagedBean.username}" value="ID" />
-							<h:inputText value="#{userManagedBean.username}" label="ID" />
-							<h:outputLabel for="#{userManagedBean.username}" value="Nom" />
-							<h:inputText value="#{userManagedBean.username}" label="Nom" />
-							<h:outputLabel for="#{userManagedBean.username}" value="Prenom" />
-							<h:inputText value="#{userManagedBean.username}" label="Prenom" />
-							<h:outputLabel for="#{userManagedBean.username}" value="Adresse" />
-							<h:inputText value="#{userManagedBean.username}" label="Adresse" />
-							<h:outputLabel for="#{userManagedBean.username}" value="Email" />
-							<h:inputText value="#{userManagedBean.username}" label="Email" />
+							<h:outputLabel for="#{clientbean.id}" value="ID" />
+							<h:inputText value="#{clientbean.id}" label="ID" />
+							<h:outputLabel for="#{clientbean.nom}" value="Nom" />
+							<h:inputText value="#{clientbean.nom}" label="Nom" />
+							<h:outputLabel for="#{clientbean.prenom}" value="Prenom" />
+							<h:inputText value="#{clientbean.prenom}" label="Prenom" />
+							<h:outputLabel for="#{clientbean.adresse}" value="Adresse" />
+							<h:inputText value="#{clientbean.adresse}" label="Adresse" />
+							<h:outputLabel for="#{clientbean.email}" value="Email" />
+							<h:inputText value="#{clientbean.email}" label="Email" />
 						</h:panelGrid>
-						<h:commandButton type="submit" value="Mettre a jour"
-							action="#{userManagedBean.login}" />
+						<h:commandButton type="submit" value="Mettre A Jour"
+							action="#{clientbean.update}" />
 					</h:form>
 				</body>
 			</ui:define>
