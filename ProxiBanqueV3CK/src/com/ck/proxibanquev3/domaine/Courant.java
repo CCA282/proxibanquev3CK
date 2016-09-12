@@ -8,8 +8,8 @@ public class Courant extends Compte{
 	 * @param type Le type du compte (défini automatiquement comme "courant")
 	 * @param solde Le solde du compte
 	 */
-	public Courant(int iDCompte, String type, double solde) {
-		super(iDCompte, "courant", solde);
+	public Courant(int idCompte, String type, double solde) {
+		super(idCompte, "courant", solde);
 	}
 	
 	/**

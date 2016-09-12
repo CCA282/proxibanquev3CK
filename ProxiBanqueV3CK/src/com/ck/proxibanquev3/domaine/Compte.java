@@ -2,19 +2,19 @@ package com.ck.proxibanquev3.domaine;
 
 public abstract class Compte {
 	
-	private int iDCompte;
+	private int idCompte;
 	private String type;
 	private double solde;
 	
 	/**
 	 * Constructeur de comptes
-	 * @param iDCompte Le numéro de compte
+	 * @param idCompte Le numéro de compte
 	 * @param type Le type de compte, "courant" ou "epargne"
 	 * @param solde Le solde du compte
 	 */
-	public Compte(int iDCompte, String type, double solde) {
+	public Compte(int idCompte, String type, double solde) {
 		super();
-		this.iDCompte = iDCompte;
+		this.idCompte = idCompte;
 		this.type = type;
 		this.solde = solde;
 	}
@@ -31,8 +31,8 @@ public abstract class Compte {
 	 * Permet d'obtenir le numéro du compte
 	 * @return Un numéro de compte
 	 */
-	public int getiDCompte() {
-		return iDCompte;
+	public int getIdCompte() {
+		return idCompte;
 	}
 	
 	/**

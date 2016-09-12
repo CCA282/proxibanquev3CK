@@ -2,21 +2,21 @@ package com.ck.proxibanquev3.domaine;
 
 public class Conseiller extends Personne{
 	
-	private int iDConseiller;
+	private int idConseiller;
 	private String login;
 	private String password;
 	
 	/**
 	 * Constructeur de conseillers
-	 * @param iDConseiller Le numéro d'identification du conseiller
+	 * @param idConseiller Le numéro d'identification du conseiller
 	 * @param nom Le nom du conseiller
 	 * @param prenom Le prénom du conseiller
 	 * @param login Le login du conseiller
 	 * @param password Le mot de passe du conseiller
 	 */
-	public Conseiller(int iDConseiller, String nom, String prenom, String login, String password) {
+	public Conseiller(int idConseiller, String nom, String prenom, String login, String password) {
 		super(nom, prenom);
-		this.iDConseiller = iDConseiller;
+		this.idConseiller = idConseiller;
 		this.login = login;
 		this.password = password;
 	}
@@ -34,13 +34,13 @@ public class Conseiller extends Personne{
 	
 	/**
 	 * Constructeur de conseillers
-	 * @param iDConseiller Le numéro d'identification du conseiller
+	 * @param idConseiller Le numéro d'identification du conseiller
 	 * @param nom Le nom du conseiller
 	 * @param prenom Le prénom du conseiller
 	 * @param login Le login du conseiller
 	 */
-	public Conseiller(int iDConseiller, String nom, String prenom, String login) {
-		this(iDConseiller, nom, prenom, login, null);
+	public Conseiller(int idConseiller, String nom, String prenom, String login) {
+		this(idConseiller, nom, prenom, login, null);
 	}
 	
 	/**
@@ -54,8 +54,8 @@ public class Conseiller extends Personne{
 	 * Permet d'obtenir le numéro d'identification d'un conseiller
 	 * @return Un numéro d'identification
 	 */
-	public int getiDConseiller() {
-		return iDConseiller;
+	public int getIdConseiller() {
+		return idConseiller;
 	}
 
 	
@@ -71,7 +71,7 @@ public class Conseiller extends Personne{
 
 	@Override
 	public String toString() {
-		return "Conseiller [iDConseiller=" + iDConseiller + ", login=" + login + ", password=" + password + "]";
+		return "Conseiller [iDConseiller=" + idConseiller + ", login=" + login + ", password=" + password + "]";
 	}
 
 }

@@ -8,8 +8,8 @@ public class Epargne extends Compte{
 	 * @param type Le type du compte (défini automatiquement comme "épargne")
 	 * @param solde Le solde du compte
 	 */
-	public Epargne(int iDCompte, String type, double solde) {
-		super(iDCompte, "epargne", solde);
+	public Epargne(int idCompte, String type, double solde) {
+		super(idCompte, "epargne", solde);
 	}
 	
 	/**

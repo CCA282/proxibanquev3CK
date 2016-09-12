@@ -34,4 +34,15 @@ public class ConseillerDAO extends DAO<Conseiller> {
 		Conseiller conseiller = new Conseiller();
 			return conseiller;
 	}
+	
+	public Conseiller readByLogin(String login) {
+		Conseiller conseiller = new Conseiller();
+			return conseiller;
+	}
+	
+	public String getExpectedPass(String login){
+		// comparer login récup et login DB.
+		String expectedpass = null;
+		return expectedpass;
+	}
 }

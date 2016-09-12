@@ -2,29 +2,29 @@ package com.ck.proxibanquev3.domaine;
 
 public class Client extends Personne{
 
-	private int iDClient;
+	private int idClient;
 	private String adresse;
 	private String email;
-	private int iDCourant;
-	private int iDEpargne;
+	private int idCourant;
+	private int idEpargne;
 	
 	/**
 	 * Constructeur de clients
-	 * @param iDClient Le numéro d'identification du client
+	 * @param idClient Le numéro d'identification du client
 	 * @param nom Le nom du client
 	 * @param prenom Le prénom du client
 	 * @param adresse L'adresse du client
 	 * @param email L'adresse e-mail du client
-	 * @param idcourant Le numéro de compte courant du client
-	 * @param idepargne Le numéro de compte épargne du client
+	 * @param idCourant Le numéro de compte courant du client
+	 * @param idEpargne Le numéro de compte épargne du client
 	 */
-	public Client(int iDClient, String nom, String prenom, String adresse, String email, int idcourant, int idepargne) {
+	public Client(int idClient, String nom, String prenom, String adresse, String email, int idCourant, int idEpargne) {
 		super(nom, prenom);
-		this.iDClient = iDClient;
+		this.idClient = idClient;
 		this.adresse = adresse;
 		this.email = email;
-		this.iDCourant = idcourant;
-		this.iDEpargne = idepargne;
+		this.idCourant = idCourant;
+		this.idEpargne = idEpargne;
 	}
 	
 	/**
@@ -49,24 +49,24 @@ public class Client extends Personne{
 	 * Permet d'obtenir le numéro d'identification du client
 	 * @return Le numéro d'identification du client
 	 */
-	public int getiDClient() {
-		return iDClient;
+	public int getIdClient() {
+		return idClient;
 	}
 
 	/**
 	 * Permet d'obtenir le numéro de compte courant du client
 	 * @return Un numéro de compte courant
 	 */
-	public int getiDCourant() {
-		return iDCourant;
+	public int getIdCourant() {
+		return idCourant;
 	}
 
 	/**
 	 * Permet d'obtenir le numéro de compte épargne du client
 	 * @return Un numéro de compte épargne
 	 */
-	public int getiDEpargne() {
-		return iDEpargne;
+	public int getIdEpargne() {
+		return idEpargne;
 	}
 
 	
@@ -102,22 +102,22 @@ public class Client extends Personne{
 	/**
 	 * @param iDClient the iDClient to set
 	 */
-	public void setiDClient(int iDClient) {
-		this.iDClient = iDClient;
+	public void setIdClient(int idClient) {
+		this.idClient = idClient;
 	}
 
 	/**
 	 * @param iDCourant the iDCourant to set
 	 */
-	public void setiDCourant(int iDCourant) {
-		this.iDCourant = iDCourant;
+	public void setIdCourant(int idCourant) {
+		this.idCourant = idCourant;
 	}
 
 	/**
 	 * @param iDEpargne the iDEpargne to set
 	 */
-	public void setiDEpargne(int iDEpargne) {
-		this.iDEpargne = iDEpargne;
+	public void setIdEpargne(int idEpargne) {
+		this.idEpargne = idEpargne;
 	}
 
 	@Override
