@@ -1,8 +1,17 @@
 package com.ck.proxibanquev3.domaine;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Conseiller extends Personne{
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int idConseiller;
+	
 	private String login;
 	private String password;
 	

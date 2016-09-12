@@ -1,8 +1,17 @@
 package com.ck.proxibanquev3.domaine;
 
-public class Client extends Personne{
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
+public class Client extends Personne{
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int idClient;
+	
 	private String adresse;
 	private String email;
 	private int idCourant;
@@ -27,6 +36,23 @@ public class Client extends Personne{
 		this.idEpargne = idEpargne;
 	}
 	
+	/**
+	 * Constructeur de clients
+	 * @param nom
+	 * @param prenom
+	 * @param adresse
+	 * @param email
+	 * @param idCourant
+	 * @param idEpargne
+	 */
+	public Client(String nom, String prenom, String adresse, String email, int idCourant, int idEpargne) {
+		super(nom, prenom);
+		this.adresse = adresse;
+		this.email = email;
+		this.idCourant = idCourant;
+		this.idEpargne = idEpargne;
+	}
+
 	/**
 	 * Constructeur de clients
 	 * @param nom Le nom du client

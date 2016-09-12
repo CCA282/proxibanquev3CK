@@ -1,5 +1,8 @@
 package com.ck.proxibanquev3.domaine;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Epargne extends Compte{
 
 	/**

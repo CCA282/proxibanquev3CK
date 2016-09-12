@@ -6,6 +6,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 public abstract class DAO<T> {
+	
 	protected static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("demojpa-pu");   
 	protected static final EntityManager em = emf.createEntityManager();
 	protected static final EntityTransaction tx = em.getTransaction();

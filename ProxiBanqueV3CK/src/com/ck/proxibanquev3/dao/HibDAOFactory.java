@@ -1,19 +1,26 @@
 package com.ck.proxibanquev3.dao;
 
+import javax.inject.Inject;
 
-public class HibDAOFactory extends AbstractDAOFactory {
+public class HibDAOFactory extends AbstractDAOFactory {  
+
+	@Inject
+	ConseillerDAO conseillerDAO;
+	ClientDAO clientDAO;
+	CompteDAO compteDAO;
 	
-	
-	
+	//Retourne un objet ConseillerDAO interagissant avec la BDD
 	public DAO getConseillerDAO(){
-	    return new ConseillerDAO();
+	    return conseillerDAO;
 	  }
 
+	//Retourne un objet ClientDAO interagissant avec la BDD
 	  public DAO getClientDAO(){
-	    return new ClientDAO();
+	    return clientDAO;
 	  }
 
+	//Retourne un objet CompteDAO interagissant avec la BDD
 	  public DAO getCompteDAO(){
-	    return new CompteDAO();
+	    return compteDAO;
 	  }
 }

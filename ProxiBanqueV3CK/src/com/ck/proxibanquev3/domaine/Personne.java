@@ -1,5 +1,6 @@
 package com.ck.proxibanquev3.domaine;
 
+
 public abstract class Personne {
 	
 	private String nom;
