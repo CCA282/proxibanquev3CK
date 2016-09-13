@@ -37,12 +37,12 @@
 						<h:outputText value="#{client.email}" />
 					</p:column>
 					<p:column headerText="Solde CC">
-						<h:outputText value="#{client.soldeCC}">
+						<h:outputText value="#{client.courant.solde}">
 							<f:convertNumber />
 						</h:outputText>
 					</p:column>
 					<p:column headerText="Solde CE">
-						<h:outputText value="#{client.soldeCE}">
+						<h:outputText value="#{client.epargne.solde}">
 							<f:convertNumber />
 						</h:outputText>
 					</p:column>
