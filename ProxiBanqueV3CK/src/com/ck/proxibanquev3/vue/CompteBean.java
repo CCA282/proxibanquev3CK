@@ -4,11 +4,15 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.ck.proxibanquev3.dao.CompteDAO;
+import com.ck.proxibanquev3.domaine.Compte;
+
 
 
 
 public class CompteBean implements Serializable {
 
+	CompteDAO compteDAO=new CompteDAO();
 	/**
 	 * 
 	 */
@@ -22,15 +26,16 @@ public class CompteBean implements Serializable {
 	
 			
 
-	private List<Comptes> comptes = new ArrayList<Comptes>() {
+	private List<Compte> comptes = new ArrayList<Compte>() {
 		/**
 		* 
 		*/
 		private static final long serialVersionUID = 1L;
 
 		{
-			add(new Comptes(1, 320));
-			add(new Comptes(2, 320));
+			addAll(compteDAO.getAllCompte());
+//			add(new Comptes(1, 320));
+//			add(new Comptes(2, 320));
 		}
 	};
 
@@ -72,14 +77,14 @@ public class CompteBean implements Serializable {
 	/**
 	 * @return the comptes
 	 */
-	public List<Comptes> getComptes() {
+	public List<Compte> getComptes() {
 		return comptes;
 	}
 
 	/**
 	 * @param comptes the comptes to set
 	 */
-	public void setComptes(List<Comptes> comptes) {
+	public void setComptes(List<Compte> comptes) {
 		this.comptes = comptes;
 	}
 

@@ -43,10 +43,6 @@ public class ClientBean implements Serializable {
 
 		{
 			addAll(clientDAO.getAllClient());
-//			add(new Clients(1, "Hogan", "Hulk", "3 rue du catch", "Huld@Hogan.com", 1, 25.0, 2, 30.0));
-//			add(new Clients(2, "Hogan", "Hulk", "3 rue du catch", "Huld@Hogan.com", 1, 25.0, 2, 30.0));
-//			add(new Clients(3, "Hogan", "Hulk", "3 rue du catch", "Huld@Hogan.com", 1, 25.0, 2, 30.0));
-//			add(new Clients(4, "Hogan", "Hulk", "3 rue du catch", "Huld@Hogan.com", 1, 25.0, 2, 30.0));
 		}
 	};
 
