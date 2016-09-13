@@ -177,9 +177,10 @@ public class ConseillerDAO {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		Conseiller conseiller;
+		List<Conseiller> listConseiller;
 		Query query = em.createNamedQuery("Conseiller.findByLogin").setParameter(1, login);
-		conseiller = (Conseiller) query.getResultList();
+		listConseiller = query.getResultList();
+		Conseiller conseiller = listConseiller.get(0);
 		tx.commit();
 		em.close();
 		emf.close();

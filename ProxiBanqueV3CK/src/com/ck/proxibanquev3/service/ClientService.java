@@ -73,8 +73,7 @@ public class ClientService {
 	 * @param idClient
 	 *            L'identifiant (id) du client dont on souhaite consulter les
 	 *            données. (int)
-	 * @return Retourne un booléen: true si tout se déroule sans problemes sinon
-	 *         false. (booléen)
+	 * @return Retourne un objet client
 	 */
 	public Client lireClient(int idClient) {
 		Client client = clientDao.findClientById(idClient);
