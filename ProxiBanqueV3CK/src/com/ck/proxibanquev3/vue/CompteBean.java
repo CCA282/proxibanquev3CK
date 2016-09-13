@@ -6,12 +6,15 @@ import java.util.List;
 
 import com.ck.proxibanquev3.dao.CompteDAO;
 import com.ck.proxibanquev3.domaine.Compte;
+import com.ck.proxibanquev3.domaine.Courant;
+import com.ck.proxibanquev3.service.CompteService;
 
 
 
 
 public class CompteBean implements Serializable {
 
+	CompteService compteService=new CompteService();
 	CompteDAO compteDAO=new CompteDAO();
 	/**
 	 * 
@@ -131,6 +134,19 @@ public class CompteBean implements Serializable {
 	}
 	
 	public String virement(){
+		Compte compteS=compteDAO.findById(idSource);
+		Compte compteD=compteDAO.findById(idDestination);
+		compteService.virement(compteS,compteD,this.montant);
+		this.comptes=new ArrayList<Compte>() {
+			/**
+			* 
+			*/
+			private static final long serialVersionUID = 1L;
+
+			{
+				addAll(compteDAO.getAllCompte());
+			}
+		};
 		return "/30virement.xhtml";
 	}
 

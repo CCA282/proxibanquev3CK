@@ -1,6 +1,6 @@
 package com.ck.proxibanquev3.service;
 
-import javax.inject.Inject;
+
 
 import com.ck.proxibanquev3.dao.CompteDAO;
 import com.ck.proxibanquev3.domaine.Compte;
@@ -14,8 +14,8 @@ import com.ck.proxibanquev3.domaine.Epargne;
  */
 public class CompteService {
 	
-	@Inject
-	CompteDAO compteDAO;
+	
+	CompteDAO compteDAO=new CompteDAO();
 	
 	/**
 	 * M�thode permettant de cr�er un compte Courant dans la base de donn�e
