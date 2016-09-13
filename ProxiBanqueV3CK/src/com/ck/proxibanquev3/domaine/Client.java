@@ -172,7 +172,18 @@ public class Client extends Personne{
 		this.adresse = adresse;
 		this.email = email;
 	}
-
+	/**
+	 * Constructeur de la classe Client
+	 * @param nom
+	 * @param prenom
+	 * @param adresse
+	 * @param email
+	 */
+	public Client(int id,String nom, String prenom, String adresse, String email) {
+		super(id,nom, prenom);
+		this.adresse = adresse;
+		this.email = email;
+	}
 	/**
 	 * Constructeur de la classe Client
 	 * @param id

@@ -259,9 +259,15 @@ public class ClientBean implements Serializable {
 			}};
 		return "/00listeclients.xhtml";
 	}
-	
-	public String update(){
 
+	public String update(){
+		Client cl=new Client(this.id,this.nom, this.prenom,this.adresse, this.email);
+		clientDAO.updateClient(cl);
+		clients=new ArrayList<Client>() {
+			private static final long serialVersionUID = 1L;
+			{
+				addAll(clientDAO.getAllClient());
+			}};
 //		Clients cl=new Clients(this.id, this.nom, this.prenom, "3 rue du catch", "Huld@Hogan.com", 1, 25.0, 2, 30.0);
 //		this.clients.add(cl);
 		return "/10editionclients.xhtml";
@@ -275,6 +281,13 @@ public class ClientBean implements Serializable {
 	}
 	
 	public String delete(){
+		Client cl=clientDAO.findClientById(this.id);
+		clientDAO.deleteClient(cl);
+		clients=new ArrayList<Client>() {
+			private static final long serialVersionUID = 1L;
+			{
+				addAll(clientDAO.getAllClient());
+			}};
 		return "/10editionclients.xhtml";
 	}
 
