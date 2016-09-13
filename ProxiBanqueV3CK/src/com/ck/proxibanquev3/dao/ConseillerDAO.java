@@ -195,14 +195,19 @@ public class ConseillerDAO {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("proxibanquev3CK-pu");   
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
+		String expectedpass = "false";
 		tx.begin();
 		List<Conseiller> conseiller;
 		Query query = em.createNamedQuery("Conseiller.findByLogin").setParameter(1, login);
 		conseiller= query.getResultList();
-		String expectedpass = conseiller.get(0).getPassword();
-		tx.commit();
-		em.close();
-		emf.close();
+		if(conseiller != null){
+			String expectedpass1 = conseiller.get(0).getPassword();
+			tx.commit();
+			em.close();
+			emf.close();
+			return expectedpass1;
+		}else
 		return expectedpass;
+		
 	}
 }

@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
  */
 @Entity
 @NamedQueries({
-	@NamedQuery(name = "Conseiller.findByLogin", query = "select c From Conseiller c where c.login=?1"), })
+	@NamedQuery(name = "Conseiller.findByLogin", query = "SELECT c FROM Conseiller c WHERE c.login =?1"), })
 
 public class Conseiller extends Personne{
 
@@ -61,6 +61,10 @@ public class Conseiller extends Personne{
 		super(nom, prenom);
 	}
 
+
+	public Conseiller() {
+		super();
+	}
 
 	/**
 	 * Méthode permettant d'obtenir le login du conseiller
