@@ -236,11 +236,16 @@ public class ClientBean implements Serializable {
 	}
 
 	public String creer(){
-		Courant courant=new Courant(0.0);
-		Epargne epargne=new Epargne(0.0);
+		Courant courant=new Courant(this.soldeCC*1.0);
+		Epargne epargne=new Epargne(this.soldeCE*1.0);
 		Conseiller conseiller=new Conseiller("Douglas", "Mbiandou", "douglas", "mbiandou");
 		Client cl=new Client(this.nom, this.prenom,this.adresse, this.email, courant, epargne, conseiller);
 		clientDAO.createClient(cl);
+		clients=new ArrayList<Client>() {
+			private static final long serialVersionUID = 1L;
+			{
+				addAll(clientDAO.getAllClient());
+			}};
 		return "/00listeclients.xhtml";
 	}
 	
