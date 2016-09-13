@@ -35,17 +35,18 @@ public class ClientBean implements Serializable {
 	private Courant courant;
 	private Epargne epargne;
 
-	private List<Clients> clients = new ArrayList<Clients>() {
+	private List<Client> clients = new ArrayList<Client>() {
 		/**
 		* 
 		*/
 		private static final long serialVersionUID = 1L;
 
 		{
-			add(new Clients(1, "Hogan", "Hulk", "3 rue du catch", "Huld@Hogan.com", 1, 25.0, 2, 30.0));
-			add(new Clients(2, "Hogan", "Hulk", "3 rue du catch", "Huld@Hogan.com", 1, 25.0, 2, 30.0));
-			add(new Clients(3, "Hogan", "Hulk", "3 rue du catch", "Huld@Hogan.com", 1, 25.0, 2, 30.0));
-			add(new Clients(4, "Hogan", "Hulk", "3 rue du catch", "Huld@Hogan.com", 1, 25.0, 2, 30.0));
+			addAll(clientDAO.getAllClient());
+//			add(new Clients(1, "Hogan", "Hulk", "3 rue du catch", "Huld@Hogan.com", 1, 25.0, 2, 30.0));
+//			add(new Clients(2, "Hogan", "Hulk", "3 rue du catch", "Huld@Hogan.com", 1, 25.0, 2, 30.0));
+//			add(new Clients(3, "Hogan", "Hulk", "3 rue du catch", "Huld@Hogan.com", 1, 25.0, 2, 30.0));
+//			add(new Clients(4, "Hogan", "Hulk", "3 rue du catch", "Huld@Hogan.com", 1, 25.0, 2, 30.0));
 		}
 	};
 
@@ -194,7 +195,7 @@ public class ClientBean implements Serializable {
 	/**
 	 * @return the clients
 	 */
-	public List<Clients> getClients() {
+	public List<Client> getClients() {
 		return clients;
 	}
 
@@ -202,7 +203,7 @@ public class ClientBean implements Serializable {
 	 * @param clients
 	 *            the clients to set
 	 */
-	public void setClients(List<Clients> clients) {
+	public void setClients(List<Client> clients) {
 		this.clients = clients;
 	}
 	
@@ -235,24 +236,29 @@ public class ClientBean implements Serializable {
 	}
 
 	public String creer(){
-		Courant courant=new Courant(0.0);
-		Epargne epargne=new Epargne(0.0);
+		Courant courant=new Courant(this.soldeCC*1.0);
+		Epargne epargne=new Epargne(this.soldeCE*1.0);
 		Conseiller conseiller=new Conseiller("Douglas", "Mbiandou", "douglas", "mbiandou");
 		Client cl=new Client(this.nom, this.prenom,this.adresse, this.email, courant, epargne, conseiller);
 		clientDAO.createClient(cl);
+		clients=new ArrayList<Client>() {
+			private static final long serialVersionUID = 1L;
+			{
+				addAll(clientDAO.getAllClient());
+			}};
 		return "/00listeclients.xhtml";
 	}
 	
 	public String update(){
 
-		Clients cl=new Clients(this.id, this.nom, this.prenom, "3 rue du catch", "Huld@Hogan.com", 1, 25.0, 2, 30.0);
-		this.clients.add(cl);
+//		Clients cl=new Clients(this.id, this.nom, this.prenom, "3 rue du catch", "Huld@Hogan.com", 1, 25.0, 2, 30.0);
+//		this.clients.add(cl);
 		return "/10editionclients.xhtml";
 	}
 	
 	public String afficher(){
-		Clients cl=new Clients(20, "sqdgfhfdg", "fdsgdfgs", "3 rue du catch", "Huld@Hogan.com", 1, 25.0, 2, 30.0);
-		this.clients.add(cl);
+//		Clients cl=new Clients(20, "sqdgfhfdg", "fdsgdfgs", "3 rue du catch", "Huld@Hogan.com", 1, 25.0, 2, 30.0);
+//		this.clients.add(cl);
 		return "/21listecomptesclients.xhtml";
 	}
 
