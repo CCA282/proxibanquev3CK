@@ -8,6 +8,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import com.ck.proxibanquev3.domaine.Client;
 import com.ck.proxibanquev3.domaine.Compte;
 import com.ck.proxibanquev3.domaine.Courant;
 import com.ck.proxibanquev3.domaine.Epargne;
@@ -40,7 +41,6 @@ public class CompteDAO {
 			
 			// Etape 2: traitement avec db
 			em.persist(courant);
-			
 			// Etape 3: fermeture de la transaction et de l'unité de travail
 			tx.commit();
 			

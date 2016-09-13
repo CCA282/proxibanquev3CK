@@ -1,8 +1,8 @@
 package com.ck.proxibanquev3.dao;
 
 import com.ck.proxibanquev3.domaine.Client;
-import com.ck.proxibanquev3.domaine.Compte;
 import com.ck.proxibanquev3.domaine.Conseiller;
+import com.ck.proxibanquev3.domaine.Courant;
 
 public class Main {
 	
@@ -13,8 +13,9 @@ public class Main {
 		Client client2 = new Client("Amanda", "Stark");
 		ConseillerDAO conseillerDAO = new ConseillerDAO();
 		ClientDAO clientDAO = new ClientDAO();
+		CompteDAO compteDAO = new CompteDAO();
 		Client client3;
-		
+		Courant courant1 = new Courant(540, "12/08/2015", client1);
 		
 		clientDAO.createClient(client1);
 		conseillerDAO.createConseiller(conseiller1);
@@ -26,6 +27,7 @@ public class Main {
 		client3.setNom("Jean");
 		clientDAO.updateClient(client3);
 		System.out.println(clientDAO.getAllClient());
+		compteDAO.createCourant(courant1);
 		
 	}
 

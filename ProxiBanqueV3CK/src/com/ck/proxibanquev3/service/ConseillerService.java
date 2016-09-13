@@ -36,6 +36,7 @@ public class ConseillerService {
 	 * @return Un conseiller
 	 */
 	public Conseiller readByLogin(String login) {
-		return conseillerdao.findConseillerByLogin(login);
+		Conseiller conseiller = conseillerdao.findConseillerByLogin(login);
+		return conseiller;
 	}
 }

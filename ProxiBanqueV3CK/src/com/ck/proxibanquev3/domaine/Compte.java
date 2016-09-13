@@ -54,6 +54,19 @@ public abstract class Compte {
 		this.solde = solde;
 	}
 	
+	
+	/**
+	 * Constructeur de la classe Compte
+	 * @param solde
+	 * @param dateOuverture
+	 */
+	public Compte(double solde, String dateOuverture) {
+		super();
+		this.solde = solde;
+		this.dateOuverture = dateOuverture;
+	}
+
+
 	/**
 	 * Constructeur de la classe Compte
 	 * @param idCompte

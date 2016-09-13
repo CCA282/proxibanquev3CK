@@ -1,5 +1,6 @@
 package com.ck.proxibanquev3.domaine;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -14,13 +15,13 @@ public class Client extends Personne{
 	private String adresse;
 	private String email;
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	private Courant courant;
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	private Epargne epargne;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	private Conseiller conseiller;
 	
 

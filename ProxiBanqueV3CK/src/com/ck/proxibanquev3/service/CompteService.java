@@ -24,8 +24,8 @@ public class CompteService {
 	 *         false. (bool�en)
 	 */
 	public boolean creerCompteCourant(Courant courant){
-		compteDAO.createCourant(courant);
-		return true;
+		boolean status = compteDAO.createCourant(courant);
+		return status;
 	}
 	
 	/**
@@ -35,8 +35,8 @@ public class CompteService {
 	 *         false. (bool�en)
 	 */
 	public boolean creerCompteEpargne(Epargne epargne){
-		compteDAO.createEpargne(epargne);
-		return true;
+		boolean status = compteDAO.createEpargne(epargne);
+		return status;
 	}
 	
 	/**
@@ -45,7 +45,7 @@ public class CompteService {
 	 * @return objet Epargne
 	 */
 	public Epargne lireEpargne(int idCompte){
-		Epargne epargne = null;
+		Epargne epargne = (Epargne) compteDAO.findById(idCompte);
 		return epargne;
 	}
 	
@@ -55,7 +55,7 @@ public class CompteService {
 	 * @return objet Courant
 	 */
 	public Courant lireCourant(int idCompte){
-		Courant courant = null;
+		Courant courant = (Courant) compteDAO.findById(idCompte);
 		return courant;
 	}
 	
@@ -68,8 +68,8 @@ public class CompteService {
 	public boolean crediter(Compte compteC, double montant){
 		double majSolde =(compteC.getSolde() + montant);
 		compteC.setSolde(majSolde);
-		compteDAO.updateCompte(compteC);
-		return true;
+		boolean status = compteDAO.updateCompte(compteC);
+		return status;
 	}
 	
 	/**
@@ -81,8 +81,8 @@ public class CompteService {
 	public boolean debiter(Compte compteD, double montant){
 		double majSolde =(compteD.getSolde() - montant);
 		compteD.setSolde(majSolde);
-		compteDAO.updateCompte(compteD);
-		return true;
+		boolean status = compteDAO.updateCompte(compteD);
+		return status;
 	}
 	
 	/**
@@ -93,9 +93,15 @@ public class CompteService {
 	 * @return False si le virement a �chou�, true si le virement a r�ussi
 	 */
 	public boolean virement(Compte compteD, Compte compteC, double montant){
-		crediter(compteC, montant);
-		debiter(compteD, montant);
+		boolean booleanC = crediter(compteC, montant);
+		boolean booleanD = debiter(compteD, montant);
+		
+	if(booleanC == true && booleanD == true){
 		return true;
+	}else
+		return false;
 	}
 
 }
+
+

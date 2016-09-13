@@ -29,7 +29,12 @@ public class Courant extends Compte{
 		super(idCompte, solde, dateOuverture);
 		this.titulaire = titulaire;
 	}
-
+	
+	public Courant(double solde, String dateOuverture, Client titulaire) {
+		super(solde, dateOuverture);
+		this.titulaire = titulaire;
+	}
+	
 	/**
 	 * Constructeur de la classe Courant
 	 * @param idCompte
