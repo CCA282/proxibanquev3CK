@@ -18,11 +18,11 @@ import com.ck.proxibanquev3.domaine.Client;
  */
 public class ClientService {
 	
-	@Inject
-	ConseillerDAO conseillerDao;
-	ConseillerService conseillerService;
-	ClientDAO clientDao;
-	CompteDAO compteDao;
+	
+	ConseillerDAO conseillerDao = new ConseillerDAO();
+	ConseillerService conseillerService = new ConseillerService();
+	ClientDAO clientDao = new ClientDAO();
+	CompteDAO compteDao = new CompteDAO();
 	
 	
 	/**

@@ -8,27 +8,26 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.ck.proxibanquev3.domaine.Client;
+import com.ck.proxibanquev3.service.ClientService;
+import com.ck.proxibanquev3.service.CompteService;
+
+import junit.framework.Assert;
+
 public class CompteServiceTest {
 
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
+	private CompteService compteService;
+	
 
 	@Before
-	public void setUp() throws Exception {
+	public void AvantChaqueTest() {
+		compteService = new CompteService();
 	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
-
+	
+	
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void testmodifierCompte() {
+		
 	}
 
 }
