@@ -6,29 +6,28 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import com.ck.proxibanquev3.domaine.Client;
+import com.ck.proxibanquev3.domaine.Conseiller;
+import com.ck.proxibanquev3.service.ClientService;
 import com.ck.proxibanquev3.service.ConseillerService;
 
 public class ConseillerServiceTest {
-
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
+	
+	private ConseillerService conseillerService;
 
 	@Before
 	public void setUp() throws Exception {
+		conseillerService = new ConseillerService();
 	}
 
-	@After
-	public void tearDown() throws Exception {
-	}
 
 	@Test
-	public void testEstValide() {
-		fail("Not yet implemented");
+	public void testreadByLogin() {
+		String login = "cca";
+		String login1 = conseillerService.readByLogin("cca").getLogin();
+		assertTrue(login.equalsIgnoreCase(login1));
+		;
 	}
 
 }
