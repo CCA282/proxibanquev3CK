@@ -1,20 +1,17 @@
 package com.ck.proxibanquev3.test;
 
-import static org.junit.Assert.*;
-
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-
-import com.ck.proxibanquev3.domaine.Client;
 import com.ck.proxibanquev3.domaine.Courant;
-import com.ck.proxibanquev3.service.ClientService;
 import com.ck.proxibanquev3.service.CompteService;
 
 import junit.framework.Assert;
 
+/**
+ * Classe permettant de tester les methodes de la classe CompteService
+ * @author Clement et karim
+ *
+ */
 public class CompteServiceTest {
 
 	private CompteService compteService;
@@ -26,6 +23,7 @@ public class CompteServiceTest {
 	}
 	
 	
+	@SuppressWarnings("deprecation")
 	@Test
 	public void testcrediter() {
 		double montantTestAvant = compteService.lireCourant(5).getSolde();

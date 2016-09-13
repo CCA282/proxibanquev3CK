@@ -1,9 +1,6 @@
 package com.ck.proxibanquev3.service;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import javax.inject.Inject;
 
 import com.ck.proxibanquev3.dao.ClientDAO;
 import com.ck.proxibanquev3.dao.CompteDAO;
@@ -73,7 +70,7 @@ public class ClientService {
 	 * @param idClient
 	 *            L'identifiant (id) du client dont on souhaite consulter les
 	 *            données. (int)
-	 * @return Retourne un objet client
+	 * @return Retourne un objet client récupéré en base de donnée
 	 */
 	public Client lireClient(int idClient) {
 		Client client = clientDao.findClientById(idClient);

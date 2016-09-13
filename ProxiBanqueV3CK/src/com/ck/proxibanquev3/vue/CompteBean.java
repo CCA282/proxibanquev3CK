@@ -12,6 +12,11 @@ import com.ck.proxibanquev3.service.CompteService;
 
 
 
+/**
+ * Bean managé pour la gestion des comptes
+ * @author Clement et Karim
+ *
+ */
 public class CompteBean implements Serializable {
 
 	CompteService compteService=new CompteService();

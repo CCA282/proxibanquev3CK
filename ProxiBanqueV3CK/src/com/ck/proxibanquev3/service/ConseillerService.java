@@ -1,6 +1,5 @@
 package com.ck.proxibanquev3.service;
 
-import javax.inject.Inject;
 
 import com.ck.proxibanquev3.dao.ConseillerDAO;
 import com.ck.proxibanquev3.domaine.Conseiller;

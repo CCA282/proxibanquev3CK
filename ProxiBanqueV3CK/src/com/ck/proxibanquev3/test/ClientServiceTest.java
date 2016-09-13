@@ -1,15 +1,18 @@
 package com.ck.proxibanquev3.test;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
 
+import org.junit.Before;
+import org.junit.Test;
 import com.ck.proxibanquev3.domaine.Client;
 import com.ck.proxibanquev3.service.ClientService;
-
 import junit.framework.Assert;
 
+
+/**
+ * Classe permettant de tester les methodes de la classe ClientService
+ * @author Clement et karim
+ *
+ */
 public class ClientServiceTest {
 
 	private ClientService clientService;

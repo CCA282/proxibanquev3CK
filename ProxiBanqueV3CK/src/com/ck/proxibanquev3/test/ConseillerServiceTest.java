@@ -1,17 +1,16 @@
 package com.ck.proxibanquev3.test;
 
 import static org.junit.Assert.*;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
 
-import com.ck.proxibanquev3.domaine.Client;
-import com.ck.proxibanquev3.domaine.Conseiller;
-import com.ck.proxibanquev3.service.ClientService;
+import org.junit.Before;
+import org.junit.Test;
 import com.ck.proxibanquev3.service.ConseillerService;
 
+/**
+ * Classe permettant de tester les methodes de la classe ConseilerService
+ * @author Clement et karim
+ *
+ */
 public class ConseillerServiceTest {
 	
 	private ConseillerService conseillerService;

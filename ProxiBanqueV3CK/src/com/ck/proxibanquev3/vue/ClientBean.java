@@ -13,6 +13,11 @@ import com.ck.proxibanquev3.service.ClientService;
 
 
 
+/**
+ * Bean managé pour la gestion des clients
+ * @author Clement et Karim
+ *
+ */
 public class ClientBean implements Serializable {
 
 	

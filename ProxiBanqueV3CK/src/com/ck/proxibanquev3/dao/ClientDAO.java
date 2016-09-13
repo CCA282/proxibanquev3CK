@@ -7,7 +7,6 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import com.ck.proxibanquev3.domaine.Client;
-//import com.objis.demojpa.domaine.Formation;
 
 /**
  * Classe ClientDao, permet la gestion des Clients en base
@@ -18,16 +17,16 @@ import com.ck.proxibanquev3.domaine.Client;
 public class ClientDAO {
 
 	/**
-	 * M�thode permettant la cr�ation en base d'un nouveau client
+	 * Methode permettant la création en base d'un nouveau client
 	 * 
 	 * @param client
-	 *            L'objet client qui va �tre cr�e dans la base de donn�e (objet
+	 *            L'objet client qui va etre cree dans la base de donnee (objet
 	 *            Client)
-	 * @return Retourne true si la m�thode se d�roule bien sinon retourne false
-	 *         (bool�en)
+	 * @return Retourne true si la methode se deroule bien sinon retourne false
+	 *         (booleen)
 	 */
 	public boolean createClient(Client client) {
-		// Ouverture de l'unit� de travail
+		// Ouverture de l'unite de travail
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("proxibanquev3CK-pu");
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
@@ -40,7 +39,7 @@ public class ClientDAO {
 			// Etape 2: traitement avec db
 			em.persist(client);
 
-			// Etape 3: fermeture de la transaction et de l'unit� de travail
+			// Etape 3: fermeture de la transaction et de l'unite de travail
 			tx.commit();
 
 		} catch (Exception e) {
@@ -48,7 +47,7 @@ public class ClientDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				// Etape 3: fermeture de l'unit� de travail
+				// Etape 3: fermeture de l'unite de travail
 				em.close();
 				emf.close();
 
@@ -61,16 +60,16 @@ public class ClientDAO {
 	}
 
 	/**
-	 * M�thode permettant d'�ffacer en base un Client
+	 * Methode permettant d'éffacer un Client en base
 	 * 
 	 * @param client
-	 *            L'objet Client qui va �tre effacer dans la base de donn�e
+	 *            L'objet Client qui va etre effacer dans la base de donnee
 	 *            (objet Client)
-	 * @return Retourne true si la m�thode se d�roule bien sinon retourne false
-	 *         (bool�en)
+	 * @return Retourne true si la methode se deroule bien sinon retourne false
+	 *         (booleen)
 	 */
 	public boolean deleteClient(Client client) {
-		// Ouverture de l'unit� de travail
+		// Ouverture de l'unite de travail
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("proxibanquev3CK-pu");
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
@@ -85,7 +84,7 @@ public class ClientDAO {
 			Client client2 = em.find(Client.class, id);
 			em.remove(client2);
 
-			// Etape 3: fermeture de la transaction et de l'unit� de travail
+			// Etape 3: fermeture de la transaction et de l'unite de travail
 			tx.commit();
 
 		} catch (Exception e) {
@@ -93,7 +92,7 @@ public class ClientDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				// Etape 3: fermeture de l'unit� de travail
+				// Etape 3: fermeture de l'unite de travail
 				em.close();
 				emf.close();
 
@@ -106,13 +105,13 @@ public class ClientDAO {
 	}
 
 	/**
-	 * M�thode permettant de mettre a jour en base un Client
+	 * Methode permettant de mettre a jour un Client en base
 	 * 
 	 * @param client
-	 *            L'objet Client qui va �tre mis a jour dans la base de donn�e
+	 *            L'objet Client qui va etre mis a jour dans la base de donnee
 	 *            (objet Client)
-	 * @return Retourne true si la m�thode se d�roule bien sinon retourne false
-	 *         (bool�en)
+	 * @return Retourne true si la m�thode se deroule bien sinon retourne false
+	 *         (booleen)
 	 */
 	public boolean updateClient(Client client) {
 		// Ouverture de l'unit� de travail
@@ -133,7 +132,7 @@ public class ClientDAO {
 			client2.setAdresse(client.getAdresse());
 			client2.setEmail(client.getEmail());
 
-			// Etape 3: fermeture de la transaction et de l'unit� de travail
+			// Etape 3: fermeture de la transaction et de l'unite de travail
 			tx.commit();
 
 		} catch (Exception e) {
@@ -141,7 +140,7 @@ public class ClientDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				// Etape 3: fermeture de l'unit� de travail
+				// Etape 3: fermeture de l'unite de travail
 				em.close();
 				emf.close();
 
@@ -154,11 +153,11 @@ public class ClientDAO {
 	}
 
 	/**
-	 * M�thode permettant d'obtenir un Client en base � partir de son id
+	 * M�thode permettant d'obtenir un Client en base a partir de son id
 	 * 
 	 * @param id
-	 *            L'id du Client qui va �tre recherch� dans la base de donn�e
-	 * @return Retourne un objet client qui correspond � la recherche effectu�
+	 *            L'id du Client qui va etre recherche dans la base de donnee
+	 * @return Retourne un objet client qui correspond a la recherche effectue
 	 */
 	public Client findClientById(int id) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("proxibanquev3CK-pu");
@@ -173,10 +172,11 @@ public class ClientDAO {
 	}
 
 	/**
-	 * M�thode permettant d'obtenir la liste de tout les Clients en base
+	 * Methode permettant d'obtenir la liste de tout les Clients en base
 	 * 
 	 * @return Retourne une list de clients
 	 */
+	@SuppressWarnings("unchecked")
 	public List<Client> getAllClient() {
 		List<Client> listClient;
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("proxibanquev3CK-pu");
@@ -192,13 +192,14 @@ public class ClientDAO {
 	}
 
 	/**
-	 * M�thode permettant d'obtenir la liste de tout les Clients d'un conseiler
+	 * Methode permettant d'obtenir la liste de tout les Clients d'un conseiler
 	 * en base
 	 * 
 	 * @param id
 	 *            l'identifiant du conseiller
-	 * @return Retourne une list de clients pris en charge par un conseiller
+	 * @return Retourne une liste de clients pris en charge par un conseiller
 	 */
+	@SuppressWarnings("unchecked")
 	public List<Client> getAllCLientByConseiller(int id) {
 		List<Client> listClientByConseiller;
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("proxibanquev3CK-pu");

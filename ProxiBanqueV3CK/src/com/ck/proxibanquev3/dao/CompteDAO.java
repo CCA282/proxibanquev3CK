@@ -8,7 +8,6 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-import com.ck.proxibanquev3.domaine.Client;
 import com.ck.proxibanquev3.domaine.Compte;
 import com.ck.proxibanquev3.domaine.Courant;
 import com.ck.proxibanquev3.domaine.Epargne;
@@ -22,7 +21,7 @@ import com.ck.proxibanquev3.domaine.Epargne;
 public class CompteDAO {
 	
 	/**
-	 * Méthode permettant la création en base d'un nouveau compte Courant
+	 * Methode permettant la création en base d'un nouveau compte Courant
 	 * 
 	 * @param courant
 	 *            L'objet Courant qui va être crée dans la base de donnée (objet Courant)
@@ -192,7 +191,7 @@ public class CompteDAO {
 	 * @return Retourne true si la méthode se déroule bien sinon retourne false (booléen)
 	 */
 	public boolean updateCompte(Compte compte) {
-		// Ouverture de l'unit� de travail
+		// Ouverture de l'unite de travail
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("proxibanquev3CK-pu");
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
@@ -232,7 +231,7 @@ public class CompteDAO {
 	 * 
 	 * @param id l'identifiant du compte
 	 *            L'identifiant du Compte qui va être recherché dans la base de donnée
-	 * @return Retourne true si la méthode se déroule bien sinon retourne false (booléen)
+	 * @return Retourne un compte récupéré en base de donnee
 	 */
 	public Compte findById(int id) {
 		// Ouverture de l'unité de travail
@@ -261,6 +260,7 @@ public class CompteDAO {
 	 * 
 	 * @return Retourne une liste de compte
 	 */
+	@SuppressWarnings("unchecked")
 	public List<Compte> getAllCompte(){
 		List<Compte> listCompte;
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("proxibanquev3CK-pu"); 

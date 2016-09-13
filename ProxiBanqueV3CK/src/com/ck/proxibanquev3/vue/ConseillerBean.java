@@ -11,6 +11,11 @@ import com.ck.proxibanquev3.service.ConseillerService;
 
 
 
+/**
+ * Bean managé pour la gestion des conseiller
+ * @author Clement et karim
+ *
+ */
 public class ConseillerBean implements Serializable {
 
 	

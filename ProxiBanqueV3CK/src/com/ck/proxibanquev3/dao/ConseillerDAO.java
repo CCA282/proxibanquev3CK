@@ -20,14 +20,14 @@ import com.ck.proxibanquev3.domaine.Conseiller;
 public class ConseillerDAO {
 	
 	/**
-	 * M�thode permettant la cr�ation en base d'un nouveau Conseiller
+	 * Methode permettant la creation en base d'un nouveau Conseiller
 	 * 
 	 * @param Conseiller
-	 *            L'objet Conseiller qui va �tre cr�e dans la base de donn�e (objet Conseiller)
+	 *            L'objet Conseiller qui va etre cree dans la base de donnee (objet Conseiller)
 	 * @return Retourne true si la m�thode se d�roule bien sinon retourne false (bool�en)
 	 */
 	public boolean createConseiller(Conseiller conseiller) {
-		// Ouverture de l'unit� de travail
+		// Ouverture de l'unite de travail
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("proxibanquev3CK-pu");   
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
@@ -40,7 +40,7 @@ public class ConseillerDAO {
 			// Etape 2: traitement avec db
 			em.persist(conseiller);
 			
-			// Etape 3: fermeture de la transaction et de l'unit� de travail
+			// Etape 3: fermeture de la transaction et de l'unite de travail
 			tx.commit();
 			
 		} catch (Exception e) {
@@ -48,7 +48,7 @@ public class ConseillerDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				// Etape 3: fermeture de l'unit� de travail
+				// Etape 3: fermeture de l'unite de travail
 				em.close();
 				emf.close();
 				
@@ -61,11 +61,11 @@ public class ConseillerDAO {
 	}
 
 	/**
-	 * M�thode permettant d'�ffacer en base un Conseiller
+	 * Methode permettant d'effacer en base un conseiller
 	 * 
 	 * @param Conseiller
-	 *            L'objet Conseiller qui va �tre effacer dans la base de donn�e (objet Conseiller)
-	 * @return Retourne true si la m�thode se d�roule bien sinon retourne false (bool�en)
+	 *            L'objet Conseiller qui va etre effacer dans la base de donnee (objet Conseiller)
+	 * @return Retourne true si la methode se d�roule bien sinon retourne false (booleen)
 	 */
 	public boolean deleteConseiller(Conseiller conseiller) {
 		// Ouverture de l'unit� de travail
@@ -101,11 +101,11 @@ public class ConseillerDAO {
 			}
 
 	/**
-	 * M�thode permettant de mettre a jour en base un Conseiller
+	 * Methode permettant de mettre a jour en base un conseiller
 	 * 
 	 * @param Conseiller
-	 *            L'objet Client qui va �tre mis a jour dans la base de donn�e (objet Conseiller)
-	 * @return Retourne true si la m�thode se d�roule bien sinon retourne false (bool�en)
+	 *            L'objet Client qui va etre mis a jour dans la base de donn�e (objet Conseiller)
+	 * @return Retourne true si la methode se d�roule bien sinon retourne false (booleen)
 	 */
 	public boolean updateConseiller(Conseiller conseiller) {
 		// Ouverture de l'unit� de travail
@@ -147,11 +147,11 @@ public class ConseillerDAO {
 			}
 	
 	/**
-	 * M�thode permettant d'obtenir un Conseiller en base � partir de son id
+	 *Methode permettant d'obtenir un Conseiller en base a partir de son id
 	 * 
 	 * @param Id
-	 *            L'id du Conseiller qui va �tre recherch� dans la base de donn�e
-	 * @return Retourne un objet Conseiller qui correspond � la recherche effectu�
+	 *            L'id du Conseiller qui va etre recherche dans la base de donnee
+	 * @return Retourne un objet Conseiller qui correspond à la recherche effectue
 	 */
 	public Conseiller findConseillerById(int id) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("proxibanquev3CK-pu");
@@ -166,11 +166,11 @@ public class ConseillerDAO {
 	}
 	
 	/**
-	 * M�thode permettant d'obtenir un Conseiller en base � partir de son id
+	 * Methode permettant d'obtenir un Conseiller en base � partir de son id
 	 * 
 	 * @param Login
-	 *            Le login du Conseiller qui va �tre recherch� dans la base de donn�e
-	 * @return Retourne un objet Conseiller qui correspond � la recherche effectu�
+	 *            Le login du Conseiller qui va etre recherche dans la base de donnee
+	 * @return Retourne un objet Conseiller qui correspond a la recherche effectue
 	 */
 	public Conseiller findConseillerByLogin(String login) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("proxibanquev3CK-pu");
