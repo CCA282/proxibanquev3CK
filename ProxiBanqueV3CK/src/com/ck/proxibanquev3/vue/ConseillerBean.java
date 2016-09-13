@@ -6,11 +6,15 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import com.ck.proxibanquev3.domaine.Conseiller;
+import com.ck.proxibanquev3.service.ClientService;
+import com.ck.proxibanquev3.service.ConseillerService;
 
 
 
 public class ConseillerBean implements Serializable {
 
+	
+	ConseillerService conseillerService= new ConseillerService();
 	/**
 	 * 
 	 */
@@ -130,16 +134,25 @@ public class ConseillerBean implements Serializable {
 
     public String connecter()
     {
-        if("test".equalsIgnoreCase(getLogin()) && "test".equals(getPassword()))
-        {
-            return "/00listeclients.xhtml?i=0";
-        }
-        else
+    	if(conseillerService.estValide(this.getLogin(),this.getPassword())==true)
+    	{
+    		return "/00listeclients.xhtml?i=0";
+    	}else
         {
             FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage("username", new FacesMessage("Invalid UserName and Password"));
             return "/login.xhtml";
         }
+//        if("test".equalsIgnoreCase(getLogin()) && "test".equals(getPassword()))
+//        {
+//            return "/00listeclients.xhtml?i=0";
+//        }
+//        else
+//        {
+//            FacesContext context = FacesContext.getCurrentInstance();
+//            context.addMessage("username", new FacesMessage("Invalid UserName and Password"));
+//            return "/login.xhtml";
+//        }
     }
 
 

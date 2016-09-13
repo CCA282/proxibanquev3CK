@@ -1,5 +1,7 @@
 package com.ck.proxibanquev3.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -194,10 +196,10 @@ public class ConseillerDAO {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		Conseiller conseiller;
+		List<Conseiller> conseiller;
 		Query query = em.createNamedQuery("Conseiller.findByLogin").setParameter(1, login);
-		conseiller=(Conseiller) query.getResultList();
-		String expectedpass = conseiller.getPassword();
+		conseiller= query.getResultList();
+		String expectedpass = conseiller.get(0).getPassword();
 		tx.commit();
 		em.close();
 		emf.close();
