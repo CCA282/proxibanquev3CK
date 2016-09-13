@@ -107,22 +107,26 @@ public class ConseillerDAO {
 	 */
 	public boolean updateConseiller(Conseiller conseiller) {
 		// Ouverture de l'unit� de travail
-				EntityManagerFactory emf = Persistence.createEntityManagerFactory("proxibanquev3CK-pu");   
+				EntityManagerFactory emf = Persistence.createEntityManagerFactory("proxibanquev3CK-pu");
 				EntityManager em = emf.createEntityManager();
 				EntityTransaction tx = em.getTransaction();
 				boolean status = true;
 
 				try {
+					int id = conseiller.getId();
+					Conseiller conseiller2 = em.find(Conseiller.class, id);
 					// Etape 1: ouverture de la transaction
 					tx.begin();
-					
+
 					// Etape 2: traitement avec db
-					
-					em.persist(conseiller);
+					conseiller2.setNom(conseiller.getNom());
+					conseiller2.setPrenom(conseiller.getPrenom());
+					conseiller2.setLogin(conseiller.getLogin());
+					conseiller2.setPassword(conseiller.getPassword());
 					
 					// Etape 3: fermeture de la transaction et de l'unit� de travail
 					tx.commit();
-					
+
 				} catch (Exception e) {
 					status = false;
 					e.printStackTrace();
@@ -131,7 +135,7 @@ public class ConseillerDAO {
 						// Etape 3: fermeture de l'unit� de travail
 						em.close();
 						emf.close();
-						
+
 					} catch (Exception e) {
 						status = false;
 						e.printStackTrace();
