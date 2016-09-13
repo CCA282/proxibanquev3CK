@@ -200,7 +200,7 @@ public class ConseillerDAO {
 		List<Conseiller> conseiller;
 		Query query = em.createNamedQuery("Conseiller.findByLogin").setParameter(1, login);
 		conseiller= query.getResultList();
-		if(conseiller != null){
+		if(conseiller.size() !=0){
 			String expectedpass1 = conseiller.get(0).getPassword();
 			tx.commit();
 			em.close();
