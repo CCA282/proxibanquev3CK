@@ -2,15 +2,15 @@ package com.ck.proxibanquev3.vue;
 
 public class Clients {
 
-	private String id;
+	private int id;
 	private String nom;
 	private String prenom;
 	private String adresse;
 	private String email;
-	private String idCourant;
-	private String soldeCC;
-	private String idEpargne;
-	private String soldeCE;
+	private int idCourant;
+	private double soldeCC;
+	private int idEpargne;
+	private double soldeCE;
 
 	/**
 	 * 
@@ -29,8 +29,8 @@ public class Clients {
 	 * @param idEpargne
 	 * @param soldeCE
 	 */
-	public Clients(String nom, String prenom, String adresse, String email, String idCourant, String soldeCC,
-			String idEpargne, String soldeCE) {
+	public Clients(String nom, String prenom, String adresse, String email, int idCourant, double soldeCC,
+			int idEpargne, double soldeCE) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
@@ -42,8 +42,8 @@ public class Clients {
 		this.soldeCE = soldeCE;
 	}
 
-	public Clients(String id, String nom, String prenom, String adresse, String email, String idCourant, String soldeCC,
-			String idEpargne, String soldeCE) {
+	public Clients(int id, String nom, String prenom, String adresse, String email, int idCourant, double soldeCC,
+			int idEpargne, double soldeCE) {
 		super();
 		this.id = id;
 		this.nom = nom;
@@ -59,7 +59,7 @@ public class Clients {
 	/**
 	 * @return the id
 	 */
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
@@ -67,7 +67,7 @@ public class Clients {
 	 * @param id
 	 *            the id to set
 	 */
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -134,7 +134,7 @@ public class Clients {
 	/**
 	 * @return the idCourant
 	 */
-	public String getIdCourant() {
+	public int getIdCourant() {
 		return idCourant;
 	}
 
@@ -142,14 +142,14 @@ public class Clients {
 	 * @param idCourant
 	 *            the idCourant to set
 	 */
-	public void setIdCourant(String idCourant) {
+	public void setIdCourant(int idCourant) {
 		this.idCourant = idCourant;
 	}
 
 	/**
 	 * @return the soldeCC
 	 */
-	public String getSoldeCC() {
+	public double getSoldeCC() {
 		return soldeCC;
 	}
 
@@ -157,14 +157,14 @@ public class Clients {
 	 * @param soldeCC
 	 *            the soldeCC to set
 	 */
-	public void setSoldeCC(String soldeCC) {
+	public void setSoldeCC(double soldeCC) {
 		this.soldeCC = soldeCC;
 	}
 
 	/**
 	 * @return the idEpargne
 	 */
-	public String getIdEpargne() {
+	public int getIdEpargne() {
 		return idEpargne;
 	}
 
@@ -172,14 +172,14 @@ public class Clients {
 	 * @param idEpargne
 	 *            the idEpargne to set
 	 */
-	public void setIdEpargne(String idEpargne) {
+	public void setIdEpargne(int idEpargne) {
 		this.idEpargne = idEpargne;
 	}
 
 	/**
 	 * @return the soldeCE
 	 */
-	public String getSoldeCE() {
+	public double getSoldeCE() {
 		return soldeCE;
 	}
 
@@ -187,7 +187,7 @@ public class Clients {
 	 * @param soldeCE
 	 *            the soldeCE to set
 	 */
-	public void setSoldeCE(String soldeCE) {
+	public void setSoldeCE(double soldeCE) {
 		this.soldeCE = soldeCE;
 	}
 

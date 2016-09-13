@@ -1,43 +1,149 @@
 package com.ck.proxibanquev3.domaine;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
+/**
+ * Classe Client qui représente des clients de proxibanque
+ * @author Clément et Karim
+ */
 @Entity
 public class Client extends Personne{
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int idClient;
-	
 	private String adresse;
 	private String email;
-	private int idCourant;
-	private int idEpargne;
+	
+	@OneToOne
+	private Courant courant;
+	
+	@OneToOne
+	private Epargne epargne;
+	
+	@ManyToOne
+	private Conseiller conseiller;
+	
+
+	/**
+	 * Méthode permettant d'obtenir l'adresse du client
+	 * @return adresse l'adresse du client
+	 */
+	public String getAdresse() {
+		return adresse;
+	}
+
+	/**
+	 * Méthode permettant d'obtenir l'adresse du client
+	 * @param adresse l'adresse du client
+	 */
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}
+
+	/**
+	 * Méthode permettant d'obtenir l'email du client
+	 * @return email l'email du client
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * Méthode permettant de modifier l'email du client
+	 * @param email l'email du client
+	 */
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	/**
+	 * Méthode permettant d'obtenir le compte courant du client
+	 * @return courant le compte courant du client
+	 */
+	public Courant getCourant() {
+		return courant;
+	}
+
+	/**
+	 * Méthode permettant de modifier le compte courant du client
+	 * @param courant le compte courant du client
+	 */
+	public void setCourant(Courant courant) {
+		this.courant = courant;
+	}
+
+	/**
+	 * Méthode permettant d'obtenir  le compte epargne du client
+	 * @return Epargne le compte epargne du client
+	 */
+	public Epargne getEpargne() {
+		return epargne;
+	}
+
+	/**
+	 * Méthode permettant de modifier le compte épargne du client
+	 * @param Epargne le compte epargne du client
+	 */
+	public void setEpargne(Epargne epargne) {
+		this.epargne = epargne;
+	}
+
+	/**
+	 * Méthode permettant d'obtenir  le conseiller du client
+	 * @return conseiller le conseiller du client
+	 */
+	public Conseiller getConseiller() {
+		return conseiller;
+	}
+
+	/**
+	 * Méthode permettant de modifier le conseiller du client
+	 * @param conseiller le conseiller du client
+	 */
+	public void setConseiller(Conseiller conseiller) {
+		this.conseiller = conseiller;
+	}
+
+	
+	//Constructeur de la classe Client 
 	
 	/**
-	 * Constructeur de clients
-	 * @param idClient Le numéro d'identification du client
-	 * @param nom Le nom du client
-	 * @param prenom Le prénom du client
-	 * @param adresse L'adresse du client
-	 * @param email L'adresse e-mail du client
-	 * @param idCourant Le numéro de compte courant du client
-	 * @param idEpargne Le numéro de compte épargne du client
+	 * Constructeur de la classe Client
+	 * @param nom
+	 * @param prenom
+	 * @param adresse
+	 * @param email
+	 * @param idCourant
+	 * @param idEpargne
+	 * @param conseiller
 	 */
-	public Client(int idClient, String nom, String prenom, String adresse, String email, int idCourant, int idEpargne) {
+	public Client(String nom, String prenom, String adresse, String email, Courant courant, Epargne epargne,
+			Conseiller conseiller) {
 		super(nom, prenom);
-		this.idClient = idClient;
 		this.adresse = adresse;
 		this.email = email;
-		this.idCourant = idCourant;
-		this.idEpargne = idEpargne;
+		this.courant = courant;
+		this.epargne = epargne;
+		this.conseiller = conseiller;
 	}
-	
+
 	/**
-	 * Constructeur de clients
+	 * Constructeur de la classe Client
+	 * @param nom
+	 * @param prenom
+	 * @param adresse
+	 * @param email
+	 * @param conseiller
+	 */
+	public Client(String nom, String prenom, String adresse, String email, Conseiller conseiller) {
+		super(nom, prenom);
+		this.adresse = adresse;
+		this.email = email;
+		this.conseiller = conseiller;
+	}
+
+	/**
+	 * Constructeur de la classe Client
 	 * @param nom
 	 * @param prenom
 	 * @param adresse
@@ -45,112 +151,51 @@ public class Client extends Personne{
 	 * @param idCourant
 	 * @param idEpargne
 	 */
-	public Client(String nom, String prenom, String adresse, String email, int idCourant, int idEpargne) {
+	public Client(String nom, String prenom, String adresse, String email, Courant courant, Epargne epargne) {
 		super(nom, prenom);
 		this.adresse = adresse;
 		this.email = email;
-		this.idCourant = idCourant;
-		this.idEpargne = idEpargne;
+		this.courant = courant;
+		this.epargne = epargne;
 	}
 
 	/**
-	 * Constructeur de clients
-	 * @param nom Le nom du client
-	 * @param prenom Le prénom du client
-	 * @param adresse L'adresse du client
-	 * @param email L'adresse e-mail du client
+	 * Constructeur de la classe Client
+	 * @param nom
+	 * @param prenom
+	 * @param adresse
+	 * @param email
 	 */
 	public Client(String nom, String prenom, String adresse, String email) {
-		this(0, nom, prenom, adresse, email, 0, 0);
-	}
-	
-	/**
-	 * Constructeur de clients par défaut
-	 */
-	public Client() {
-		this(0, null, null, null, null, 0, 0);
-	}
-
-	/**
-	 * Permet d'obtenir le numéro d'identification du client
-	 * @return Le numéro d'identification du client
-	 */
-	public int getIdClient() {
-		return idClient;
-	}
-
-	/**
-	 * Permet d'obtenir le numéro de compte courant du client
-	 * @return Un numéro de compte courant
-	 */
-	public int getIdCourant() {
-		return idCourant;
-	}
-
-	/**
-	 * Permet d'obtenir le numéro de compte épargne du client
-	 * @return Un numéro de compte épargne
-	 */
-	public int getIdEpargne() {
-		return idEpargne;
-	}
-
-	
-	
-	/**
-	 * @return the adresse
-	 */
-	public String getAdresse() {
-		return adresse;
-	}
-
-	/**
-	 * @param adresse the adresse to set
-	 */
-	public void setAdresse(String adresse) {
+		super(nom, prenom);
 		this.adresse = adresse;
-	}
-
-	/**
-	 * @return the email
-	 */
-	public String getEmail() {
-		return email;
-	}
-
-	/**
-	 * @param email the email to set
-	 */
-	public void setEmail(String email) {
 		this.email = email;
 	}
 
 	/**
-	 * @param iDClient the iDClient to set
+	 * Constructeur de la classe Client
+	 * @param id
+	 * @param nom
+	 * @param prenom
 	 */
-	public void setIdClient(int idClient) {
-		this.idClient = idClient;
+	public Client(int id, String nom, String prenom) {
+		super(id, nom, prenom);
 	}
 
 	/**
-	 * @param iDCourant the iDCourant to set
+	 * Constructeur de la classe Client
+	 * @param nom
+	 * @param prenom
 	 */
-	public void setIdCourant(int idCourant) {
-		this.idCourant = idCourant;
+	public Client(String nom, String prenom) {
+		super(nom, prenom);
 	}
-
+	
 	/**
-	 * @param iDEpargne the iDEpargne to set
+	 * Constructeur de la classe Client
 	 */
-	public void setIdEpargne(int idEpargne) {
-		this.idEpargne = idEpargne;
+	public Client() {
+		super();
 	}
 
-	@Override
-	public String toString() {
-		return "Client [adresse=" + adresse + ", email=" + email + "]";
-	}
-
-	
-	
 }

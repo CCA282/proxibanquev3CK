@@ -1,86 +1,113 @@
 package com.ck.proxibanquev3.domaine;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.util.Collection;
 
+import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+
+/**
+ * Classe Conseiller qui représente des Conseiller de proxibanque
+ * @author Clément et Karim
+ */
 @Entity
+@NamedQueries({
+	@NamedQuery(name = "Conseiller.findByLogin", query = "select c From Conseiller c where c.login=?1"), })
+
 public class Conseiller extends Personne{
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int idConseiller;
-	
+
 	private String login;
 	private String password;
 	
+	@OneToMany(mappedBy="conseiller")
+	private Collection<Client> clients;
+	
+
 	/**
-	 * Constructeur de conseillers
-	 * @param idConseiller Le numéro d'identification du conseiller
-	 * @param nom Le nom du conseiller
-	 * @param prenom Le prénom du conseiller
-	 * @param login Le login du conseiller
-	 * @param password Le mot de passe du conseiller
+	 * Constructeur de la classe Conseiller
+	 * @param nom
+	 * @param prenom
+	 * @param login
+	 * @param password
+	 * @param clients
 	 */
-	public Conseiller(int idConseiller, String nom, String prenom, String login, String password) {
+	public Conseiller(String nom, String prenom, String login, String password, Collection<Client> clients) {
 		super(nom, prenom);
-		this.idConseiller = idConseiller;
+		this.login = login;
+		this.password = password;
+		this.clients = clients;
+	}
+
+	/**
+	 * Constructeur de la classe Conseiller
+	 * @param nom
+	 * @param prenom
+	 * @param login
+	 * @param password
+	 */
+	public Conseiller(String nom, String prenom, String login, String password) {
+		super(nom, prenom);
 		this.login = login;
 		this.password = password;
 	}
-	
-	/**
-	 * Constructeur de conseillers
-	 * @param nom Le nom du conseiller
-	 * @param prenom Le prénom du conseiller
-	 * @param login Le login du conseiller
-	 * @param password Le mot de passe du conseiller
-	 */
-	public Conseiller(String nom, String prenom, String login, String password) {
-		this(0, nom, prenom, login, password);
-	}
-	
-	/**
-	 * Constructeur de conseillers
-	 * @param idConseiller Le numéro d'identification du conseiller
-	 * @param nom Le nom du conseiller
-	 * @param prenom Le prénom du conseiller
-	 * @param login Le login du conseiller
-	 */
-	public Conseiller(int idConseiller, String nom, String prenom, String login) {
-		this(idConseiller, nom, prenom, login, null);
-	}
-	
-	/**
-	 * Constructeur de conseillers par défaut
-	 */
-	public Conseiller() {
-		this(0, null, null, null, null);
-	}
 
 	/**
-	 * Permet d'obtenir le numéro d'identification d'un conseiller
-	 * @return Un numéro d'identification
+	 * Constructeur de la classe Conseiller
+	 * @param nom
+	 * @param prenom
 	 */
-	public int getIdConseiller() {
-		return idConseiller;
+	public Conseiller(String nom, String prenom) {
+		super(nom, prenom);
 	}
 
-	
-	
+
 	/**
+	 * Méthode permettant d'obtenir le login du conseiller
 	 * @return the login
 	 */
 	public String getLogin() {
 		return login;
 	}
 
-
-
-	@Override
-	public String toString() {
-		return "Conseiller [iDConseiller=" + idConseiller + ", login=" + login + ", password=" + password + "]";
+	/**
+	 * Méthode permettant de modifier le login du conseiller
+	 * @param login le login du conseiller
+	 */
+	public void setLogin(String login) {
+		this.login = login;
 	}
 
+	/**
+	 * Méthode permettant d'obtenir le mot de passe du conseiller
+	 * @return the password le mot de passe du conseiller
+	 */
+	public String getPassword() {
+		return password;
+	}
+
+	/**
+	 * Méthode permettant de modifier le mot de passe du conseiller
+	 * @param password le mot de passe du conseiller
+	 */
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	/**
+	 * Méthode permettant d'obtenir la liste des clients d'un conseiller
+	 * @return clients la liste des clients d'un conseiller
+	 */
+	public Collection<Client> getClients() {
+		return clients;
+	}
+
+	/**
+	 * Méthode permettant de modifier la liste des clients d'un conseiller
+	 * @param clients la liste des clients d'un conseiller
+	 */
+	public void setClients(Collection<Client> clients) {
+		this.clients = clients;
+	}
+	
 }

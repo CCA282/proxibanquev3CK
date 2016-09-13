@@ -13,15 +13,15 @@ public class ClientBean implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private String id;
+	private int id;
 	private String nom;
 	private String prenom;
 	private String adresse;
 	private String email;
-	private String idCourant;
-	private String soldeCC;
-	private String idEpargne;
-	private String soldeCE;
+	private int idCourant;
+	private double soldeCC;
+	private int idEpargne;
+	private double soldeCE;
 
 	private List<Clients> clients = new ArrayList<Clients>() {
 		/**
@@ -30,10 +30,10 @@ public class ClientBean implements Serializable {
 		private static final long serialVersionUID = 1L;
 
 		{
-			add(new Clients("1", "Hogan", "Hulk", "3 rue du catch", "Huld@Hogan.com", "1", "25.0", "2", "30.0"));
-			add(new Clients("2", "Hogan", "Hulk", "3 rue du catch", "Huld@Hogan.com", "1", "25.0", "2", "30.0"));
-			add(new Clients("3", "Hogan", "Hulk", "3 rue du catch", "Huld@Hogan.com", "1", "25.0", "2", "30.0"));
-			add(new Clients("4", "Hogan", "Hulk", "3 rue du catch", "Huld@Hogan.com", "1", "25.0", "2", "30.0"));
+			add(new Clients(1, "Hogan", "Hulk", "3 rue du catch", "Huld@Hogan.com", 1, 25.0, 2, 30.0));
+			add(new Clients(2, "Hogan", "Hulk", "3 rue du catch", "Huld@Hogan.com", 1, 25.0, 2, 30.0));
+			add(new Clients(3, "Hogan", "Hulk", "3 rue du catch", "Huld@Hogan.com", 1, 25.0, 2, 30.0));
+			add(new Clients(4, "Hogan", "Hulk", "3 rue du catch", "Huld@Hogan.com", 1, 25.0, 2, 30.0));
 		}
 	};
 
@@ -47,7 +47,7 @@ public class ClientBean implements Serializable {
 	/**
 	 * @return the id
 	 */
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
@@ -55,7 +55,7 @@ public class ClientBean implements Serializable {
 	 * @param id
 	 *            the id to set
 	 */
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -122,7 +122,7 @@ public class ClientBean implements Serializable {
 	/**
 	 * @return the idCourant
 	 */
-	public String getIdCourant() {
+	public int getIdCourant() {
 		return idCourant;
 	}
 
@@ -130,14 +130,14 @@ public class ClientBean implements Serializable {
 	 * @param idCourant
 	 *            the idCourant to set
 	 */
-	public void setIdCourant(String idCourant) {
+	public void setIdCourant(int idCourant) {
 		this.idCourant = idCourant;
 	}
 
 	/**
 	 * @return the soldeCC
 	 */
-	public String getSoldeCC() {
+	public double getSoldeCC() {
 		return soldeCC;
 	}
 
@@ -145,14 +145,14 @@ public class ClientBean implements Serializable {
 	 * @param soldeCC
 	 *            the soldeCC to set
 	 */
-	public void setSoldeCC(String soldeCC) {
+	public void setSoldeCC(double soldeCC) {
 		this.soldeCC = soldeCC;
 	}
 
 	/**
 	 * @return the idEpargne
 	 */
-	public String getIdEpargne() {
+	public int getIdEpargne() {
 		return idEpargne;
 	}
 
@@ -160,14 +160,14 @@ public class ClientBean implements Serializable {
 	 * @param idEpargne
 	 *            the idEpargne to set
 	 */
-	public void setIdEpargne(String idEpargne) {
+	public void setIdEpargne(int idEpargne) {
 		this.idEpargne = idEpargne;
 	}
 
 	/**
 	 * @return the soldeCE
 	 */
-	public String getSoldeCE() {
+	public double getSoldeCE() {
 		return soldeCE;
 	}
 
@@ -175,7 +175,7 @@ public class ClientBean implements Serializable {
 	 * @param soldeCE
 	 *            the soldeCE to set
 	 */
-	public void setSoldeCE(String soldeCE) {
+	public void setSoldeCE(double soldeCE) {
 		this.soldeCE = soldeCE;
 	}
 
@@ -195,15 +195,22 @@ public class ClientBean implements Serializable {
 	}
 	
 	public String creer(){
-		Clients cl=new Clients("6", this.nom, this.prenom, "3 rue du catch", "Huld@Hogan.com", "1", "25.0", "2", "30.0");
+		Clients cl=new Clients(6, this.nom, this.prenom, "3 rue du catch", "Huld@Hogan.com", 1, 25.0, 2, 30.0);
 		this.clients.add(cl);
-		return "00listeclients.xhtml?i=0";
+		return "/00listeclients.xhtml";
 	}
 	
 	public String update(){
-		Clients cl=new Clients("2", this.nom, this.prenom, "3 rue du catch", "Huld@Hogan.com", "1", "25.0", "2", "30.0");
+
+		Clients cl=new Clients(this.id, this.nom, this.prenom, "3 rue du catch", "Huld@Hogan.com", 1, 25.0, 2, 30.0);
 		this.clients.add(cl);
-		return "10editionclients.xhtml?i=1";
+		return "/10editionclients.xhtml";
+	}
+	
+	public String afficher(){
+		Clients cl=new Clients(20, "sqdgfhfdg", "fdsgdfgs", "3 rue du catch", "Huld@Hogan.com", 1, 25.0, 2, 30.0);
+		this.clients.add(cl);
+		return "/21listecomptesclients.xhtml";
 	}
 
 }

@@ -14,20 +14,22 @@
 	<center>
 		<p:panel header="Login Form" style="width: 350;" >
 			<h:form>
-         
 			 <h:panelGrid columns="2" cellpadding="2">
-					<h:outputLabel for="#{userManagedBean.username}" value="UserName" />
-					<h:inputText value="#{userManagedBean.username}" label="UserName"></h:inputText>
-					<h:outputLabel for="#{userManagedBean.password}" value="Password" />
-					<h:inputSecret value="#{userManagedBean.password}"></h:inputSecret>
-					
+					<h:outputLabel for="#{conseillerbean.login}" value="UserName" />
+					<h:inputText value="#{conseillerbean.login}" label="UserName"/>
+					<h:outputLabel for="#{conseillerbean.password}" value="Password" />
+					<h:inputSecret value="#{conseillerbean.password}"/>
 					<h:commandButton type="submit" value="Login"
-						action="#{userManagedBean.login}"></h:commandButton>
+						action="#{conseillerbean.connecter}"/>
 				</h:panelGrid>
 			</h:form>
 		</p:panel>
+		<h3 style="margin-top: 0"></h3>
+		<h3 style="margin-top: 0">BIENVENUE SUR PROXIBANQUE V3</h3>
+		<h3 style="margin-top: 0">MERCI DE RENTRER VOTRE LOGIN ET MOT DE PASSE</h3>
+		<h3 style="margin-top: 0">POUR LA DEMO: LOGIN="test" et PASSWORD="test"</h3>
 		<div>
-			<h:messages></h:messages>
+			<h:messages/>
 		</div>
 	</center>
 </h:body>

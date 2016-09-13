@@ -5,19 +5,23 @@ import javax.inject.Inject;
 import com.ck.proxibanquev3.dao.ConseillerDAO;
 import com.ck.proxibanquev3.domaine.Conseiller;
 
+/**
+* Classe du domaine service qui concerne l'ensemble des services Conseiller. Cette
+ * classe va permettre de: authentifier, lire un Conseiller
+ * @author Clement et Karim
+ */
 public class ConseillerService {
 	
 	@Inject
 	ConseillerDAO conseillerdao;
 	
 	/**
-	 * Permet de comparer le mot de passe entré par un conseiller lors de sa tentative d'authentification avec celui présent en base de données
+	 * Permet de comparer le mot de passe entrï¿½ par un conseiller lors de sa tentative d'authentification avec celui prï¿½sent en base de donnï¿½es
 	 * @param login Le login du conseiller
-	 * @param password Le password entré par le conseiller lors de la tentative d'authentification
-	 * @return True si le mot de passe fourni correspond à celui présent en base de données, false si le mot de passe fourni n'est pas correct
+	 * @param password Le password entrï¿½ par le conseiller lors de la tentative d'authentification
+	 * @return True si le mot de passe fourni correspond ï¿½ celui prï¿½sent en base de donnï¿½es, false si le mot de passe fourni n'est pas correct
 	 */
 	public boolean estValide(String login, String password) {
-		
 		String expectedpass = conseillerdao.getExpectedPass(login);
 		
 		if (expectedpass != null && expectedpass.equalsIgnoreCase(password))
@@ -26,14 +30,12 @@ public class ConseillerService {
 			return false;
 	}
 	
-	
 	/**
-	 * Permet d'obtenir les informations d'un conseiller
+	 * Permet d'obtenir les informations d'un conseiller en base de donnï¿½e ï¿½ partir d'un login
 	 * @param login Le login du conseiller
 	 * @return Un conseiller
 	 */
 	public Conseiller readByLogin(String login) {
-		return conseillerdao.readByLogin(login);
-		
+		return conseillerdao.findConseillerByLogin(login);
 	}
 }

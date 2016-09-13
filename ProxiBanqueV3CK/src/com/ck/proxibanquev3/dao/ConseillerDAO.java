@@ -1,48 +1,202 @@
 package com.ck.proxibanquev3.dao;
 
-import javax.persistence.Entity;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import com.ck.proxibanquev3.domaine.Conseiller;
 
-@Entity
-public class ConseillerDAO extends DAO<Conseiller> {
+
+/**
+ * Classe ConseillerDAO, permet la gestion des Conseiller en base
+ * 
+ * @author Clement et Karim
+ *
+ */
+public class ConseillerDAO {
 	
-	public ConseillerDAO(){
-		super();
+	/**
+	 * Mï¿½thode permettant la crï¿½ation en base d'un nouveau Conseiller
+	 * 
+	 * @param Conseiller
+	 *            L'objet Conseiller qui va ï¿½tre crï¿½e dans la base de donnï¿½e (objet Conseiller)
+	 * @return Retourne true si la mï¿½thode se dï¿½roule bien sinon retourne false (boolï¿½en)
+	 */
+	public boolean createConseiller(Conseiller conseiller) {
+		// Ouverture de l'unitï¿½ de travail
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("proxibanquev3CK-pu");   
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		boolean status = true;
+
+		try {
+			// Etape 1: ouverture de la transaction
+			tx.begin();
+			
+			// Etape 2: traitement avec db
+			em.persist(conseiller);
+			
+			// Etape 3: fermeture de la transaction et de l'unitï¿½ de travail
+			tx.commit();
+			
+		} catch (Exception e) {
+			status = false;
+			e.printStackTrace();
+		} finally {
+			try {
+				// Etape 3: fermeture de l'unitï¿½ de travail
+				em.close();
+				emf.close();
+				
+			} catch (Exception e) {
+				status = false;
+				e.printStackTrace();
+			}
+		}
+		return status;
 	}
 
-	@Override
-	public boolean create(Conseiller obj) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	/**
+	 * Mï¿½thode permettant d'ï¿½ffacer en base un Conseiller
+	 * 
+	 * @param Conseiller
+	 *            L'objet Conseiller qui va ï¿½tre effacer dans la base de donnï¿½e (objet Conseiller)
+	 * @return Retourne true si la mï¿½thode se dï¿½roule bien sinon retourne false (boolï¿½en)
+	 */
+	public boolean deleteConseiller(Conseiller conseiller) {
+		// Ouverture de l'unitï¿½ de travail
+				EntityManagerFactory emf = Persistence.createEntityManagerFactory("proxibanquev3CK-pu");   
+				EntityManager em = emf.createEntityManager();
+				EntityTransaction tx = em.getTransaction();
+				boolean status = true;
+				try {
+					// Etape 1: ouverture de la transaction
+					tx.begin();
+					
+					// Etape 2: traitement avec db
+					em.remove(conseiller);
+					
+					// Etape 3: fermeture de la transaction et de l'unitï¿½ de travail
+					tx.commit();
+					
+				} catch (Exception e) {
+					status = false;
+					e.printStackTrace();
+				} finally {
+					try {
+						// Etape 3: fermeture de l'unitï¿½ de travail
+						em.close();
+						emf.close();
+						
+					} catch (Exception e) {
+						status = false;
+						e.printStackTrace();
+					}
+				}
+				return status;
+			}
 
-	@Override
-	public boolean delete(Conseiller obj) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	/**
+	 * Mï¿½thode permettant de mettre a jour en base un Conseiller
+	 * 
+	 * @param Conseiller
+	 *            L'objet Client qui va ï¿½tre mis a jour dans la base de donnï¿½e (objet Conseiller)
+	 * @return Retourne true si la mï¿½thode se dï¿½roule bien sinon retourne false (boolï¿½en)
+	 */
+	public boolean updateConseiller(Conseiller conseiller) {
+		// Ouverture de l'unitï¿½ de travail
+				EntityManagerFactory emf = Persistence.createEntityManagerFactory("proxibanquev3CK-pu");   
+				EntityManager em = emf.createEntityManager();
+				EntityTransaction tx = em.getTransaction();
+				boolean status = true;
 
-	@Override
-	public boolean update(Conseiller obj) {
-		// TODO Auto-generated method stub
-		return false;
+				try {
+					// Etape 1: ouverture de la transaction
+					tx.begin();
+					
+					// Etape 2: traitement avec db
+					
+					em.persist(conseiller);
+					
+					// Etape 3: fermeture de la transaction et de l'unitï¿½ de travail
+					tx.commit();
+					
+				} catch (Exception e) {
+					status = false;
+					e.printStackTrace();
+				} finally {
+					try {
+						// Etape 3: fermeture de l'unitï¿½ de travail
+						em.close();
+						emf.close();
+						
+					} catch (Exception e) {
+						status = false;
+						e.printStackTrace();
+					}
+				}
+				return status;
+			}
+	
+	/**
+	 * Mï¿½thode permettant d'obtenir un Conseiller en base ï¿½ partir de son id
+	 * 
+	 * @param Id
+	 *            L'id du Conseiller qui va ï¿½tre recherchï¿½ dans la base de donnï¿½e
+	 * @return Retourne un objet Conseiller qui correspond ï¿½ la recherche effectuï¿½
+	 */
+	public Conseiller findConseillerById(int id) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("proxibanquev3CK-pu");
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		Conseiller conseiller = em.find(Conseiller.class, id);
+		tx.commit();
+		em.close();
+		emf.close();
+		return conseiller;
 	}
 	
-	@Override
-	public Conseiller findById(int id) {
-		Conseiller conseiller = new Conseiller();
-			return conseiller;
+	/**
+	 * Mï¿½thode permettant d'obtenir un Conseiller en base ï¿½ partir de son id
+	 * 
+	 * @param Login
+	 *            Le login du Conseiller qui va ï¿½tre recherchï¿½ dans la base de donnï¿½e
+	 * @return Retourne un objet Conseiller qui correspond ï¿½ la recherche effectuï¿½
+	 */
+	public Conseiller findConseillerByLogin(String login) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("proxibanquev3CK-pu");
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		Conseiller conseiller;
+		Query query = em.createNamedQuery("Conseiller.findByLogin").setParameter(1, login);
+		conseiller = (Conseiller) query.getResultList();
+		tx.commit();
+		em.close();
+		emf.close();
+		return conseiller;
 	}
 	
-	public Conseiller readByLogin(String login) {
-		Conseiller conseiller = new Conseiller();
-			return conseiller;
-	}
-	
+	/**
+	 * Mï¿½thode permettant de rï¿½cupï¿½rer le mot de passe du Conseiller en base de donnï¿½e ï¿½ partir du login
+	 * @param login du conseiller
+	 * @return retourne un String "expectedpass" qui est le mot de passe du conseiller enregistrï¿½ en base de donnï¿½e
+	 */
 	public String getExpectedPass(String login){
-		// comparer login récup et login DB.
-		String expectedpass = null;
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("proxibanquev3CK-pu");   
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		Conseiller conseiller;
+		Query query = em.createNamedQuery("Conseiller.findByLogin").setParameter(1, login);
+		conseiller=(Conseiller) query.getResultList();
+		String expectedpass = conseiller.getPassword();
+		tx.commit();
+		em.close();
+		emf.close();
 		return expectedpass;
 	}
 }
