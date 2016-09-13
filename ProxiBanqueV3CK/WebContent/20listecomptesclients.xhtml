@@ -17,7 +17,7 @@
 			<!-- Redefinition de la zone 'content' du layout  	-->
 			<ui:define name="content">
 				<body>
-					<h3 style="margin-top: 0">Edition Clients</h3>
+					<h3 style="margin-top: 0">Liste des comptes des clients</h3>
 					<p:dataTable var="client" value="#{clientbean.clients}">
 						<p:column headerText="Id">
 							<h:outputText value="#{client.id}">
@@ -53,7 +53,7 @@
 							<h:outputLabel for="#{clientbean.id}" value="ID" />
 							<h:inputText value="#{clientbean.id}" label="ID" required="true" />
 						</h:panelGrid>
-						<h:commandButton type="submit" value="Afficher les comptes"
+						<h:commandButton type="submit" value="Afficher detail client"
 							action="#{clientbean.afficher}">
 							<f:param name="i" value="2" />
 						</h:commandButton>

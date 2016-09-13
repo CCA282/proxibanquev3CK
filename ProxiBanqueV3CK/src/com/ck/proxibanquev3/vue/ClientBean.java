@@ -34,6 +34,9 @@ public class ClientBean implements Serializable {
 	private double soldeCE;
 	private Courant courant;
 	private Epargne epargne;
+	private Client clientDetails;
+
+
 
 	private List<Client> clients = new ArrayList<Client>() {
 		/**
@@ -230,7 +233,19 @@ public class ClientBean implements Serializable {
 	public void setEpargne(Epargne epargne) {
 		this.epargne = epargne;
 	}
+	/**
+	 * @return the clientDetails
+	 */
+	public Client getClientDetails() {
+		return clientDetails;
+	}
 
+	/**
+	 * @param clientDetails the clientDetails to set
+	 */
+	public void setClientDetails(Client clientDetails) {
+		this.clientDetails = clientDetails;
+	}
 	public String creer(){
 		Courant courant=new Courant(this.soldeCC*1.0);
 		Epargne epargne=new Epargne(this.soldeCE*1.0);
@@ -253,9 +268,14 @@ public class ClientBean implements Serializable {
 	}
 	
 	public String afficher(){
+		clientDetails = clientDAO.findClientById(this.id);
 //		Clients cl=new Clients(20, "sqdgfhfdg", "fdsgdfgs", "3 rue du catch", "Huld@Hogan.com", 1, 25.0, 2, 30.0);
 //		this.clients.add(cl);
 		return "/21listecomptesclients.xhtml";
+	}
+	
+	public String delete(){
+		return "/10editionclients.xhtml";
 	}
 
 }

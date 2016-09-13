@@ -17,7 +17,7 @@
 			<!-- Redefinition de la zone 'content' du layout  	-->
 			<ui:define name="content">
 				<body>
-					<h3 style="margin-top: 0">Edition Clients</h3>
+					<h3 style="margin-top: 0">Liste des comptes des clients</h3>
 					<p:dataTable var="client" value="#{clientbean.clients}">
 						<p:column headerText="Id">
 							<h:outputText value="#{client.id}">
@@ -46,7 +46,6 @@
 								<f:convertNumber />
 							</h:outputText>
 						</p:column>
-						</p:column>
 					</p:dataTable>
 
 					<h:form id="AfficherComptes">
@@ -54,14 +53,14 @@
 							<h:outputLabel for="#{clientbean.id}" value="ID" />
 							<h:inputText value="#{clientbean.id}" label="ID" required="true" />
 						</h:panelGrid>
-						<h:commandButton type="submit" value="Afficher les comptes"
+						<h:commandButton type="submit" value="Afficher detail client"
 							action="#{clientbean.afficher}">
 							<f:param name="i" value="2" />
 						</h:commandButton>
 					</h:form>
 
 					<h3 style="margin-top: 0">Liste des comptes clients</h3>
-					<p:dataTable var="client" value="#{clientbean.clients}">
+					<p:dataTable var="client" value="#{clientbean.clientDetails}">
 						<p:column headerText="Id">
 							<h:outputText value="#{client.id}">
 								<f:convertNumber />
@@ -79,8 +78,18 @@
 						<p:column headerText="Email">
 							<h:outputText value="#{client.email}" />
 						</p:column>
+						<p:column headerText="ID CC">
+							<h:outputText value="#{client.courant.idCompte}">
+								<f:convertNumber />
+							</h:outputText>
+						</p:column>
 						<p:column headerText="Solde CC">
 							<h:outputText value="#{client.courant.solde}">
+								<f:convertNumber />
+							</h:outputText>
+						</p:column>
+						<p:column headerText="ID CE">
+							<h:outputText value="#{client.epargne.idCompte}">
 								<f:convertNumber />
 							</h:outputText>
 						</p:column>
