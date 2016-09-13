@@ -18,7 +18,7 @@ public class ClientServiceTest {
 	public void AvantTest() throws Exception {
 		clientService = new ClientService();
 		Client client = clientService.lireClient(9);
-		client.setNom("Johny");
+		client.setNom("Haliday");
 		clientService.modifierClient(client);
 	}
 
@@ -28,7 +28,7 @@ public class ClientServiceTest {
 	public void testmodifierClient() {
 		String nomClientAvantTest = clientService.lireClient(9).getNom();
 		Client client = clientService.lireClient(9);
-		client.setNom("David");
+		client.setNom("Holliday");
 		clientService.modifierClient(client);
 		Assert.assertFalse(nomClientAvantTest.equalsIgnoreCase(clientService.lireClient(9).getNom()));
 	}

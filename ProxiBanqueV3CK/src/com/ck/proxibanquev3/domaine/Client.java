@@ -21,7 +21,7 @@ public class Client extends Personne{
 	@OneToOne(cascade=CascadeType.ALL)
 	private Epargne epargne;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.PERSIST)
 	private Conseiller conseiller;
 	
 

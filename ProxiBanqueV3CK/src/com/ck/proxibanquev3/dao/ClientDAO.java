@@ -81,7 +81,9 @@ public class ClientDAO {
 			tx.begin();
 
 			// Etape 2: traitement avec db
-			em.remove(client);
+			int id = client.getId();
+			Client client2 = em.find(Client.class, id);
+			em.remove(client2);
 
 			// Etape 3: fermeture de la transaction et de l'unit� de travail
 			tx.commit();
