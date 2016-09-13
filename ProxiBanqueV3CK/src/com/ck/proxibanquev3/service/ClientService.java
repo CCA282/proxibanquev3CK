@@ -1,6 +1,8 @@
 package com.ck.proxibanquev3.service;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 
 import com.ck.proxibanquev3.dao.ClientDAO;
@@ -33,8 +35,8 @@ public class ClientService {
 	 *         false. (booléen)
 	 */
 	public boolean creerClient(Client client) {
-		clientDao.createClient(client);
-		return true;
+		boolean result = clientDao.createClient(client);
+		return result;
 	}
 	
 	/**
@@ -48,8 +50,9 @@ public class ClientService {
 	 *            dans la base de données. (Objet de type Client)
 	 * 
 	 */
-	public boolean modifierClient(int idClient, Client client) {
-		return true;
+	public boolean modifierClient(Client client) {
+		boolean result = clientDao.updateClient(client);
+		return result;
 	}
 	
 	/**
@@ -58,8 +61,9 @@ public class ClientService {
 	 * @param idClient
 	 *            L'identifiant (id) du client qu'on souhaite supprimer.
 	 */
-	public boolean suppressionClient(int idClient) {
-		return true;
+	public boolean suppressionClient(Client client) {
+		boolean result = clientDao.deleteClient(client);
+		return result;
 	}
 
 	/**
@@ -73,7 +77,7 @@ public class ClientService {
 	 *         false. (booléen)
 	 */
 	public Client lireClient(int idClient) {
-		Client client = null;
+		Client client = clientDao.findClientById(idClient);
 		return client;
 	}
 	
@@ -82,10 +86,10 @@ public class ClientService {
 	 * existent.
 	 * 
 	 * @return Cette methode retourne une liste de Client sous forme d'ArrayList
-	 *         (ArrayList<Client>)
+	 *         (List<Client>)
 	 */
-	public ArrayList<Client> lireTousLesCLients() {
-		ArrayList<Client> listeClient = null;
+	public List<Client> lireTousLesCLients() {
+		List<Client> listeClient = clientDao.getAllClient();
 		return listeClient;
 	}
 
@@ -94,14 +98,14 @@ public class ClientService {
 	 * l'ensemble des clients rattachés à ce conseiller. Cette methode renvoie
 	 * les Clients sous forme d'ArrayList
 	 * 
-	 * @param login
-	 *            Le login du conseiller responsable des clients dont on veut la
-	 *            liste (String).
+	 * @param id
+	 *            L'id du conseiller responsable des clients dont on veut la
+	 *            liste (int).
 	 * @return Cette methode retourne une liste de Client sous forme d'ArrayList
-	 *         (ArrayList<Client>)
+	 *         (List<Client>)
 	 */
-	public ArrayList<Client> lireClientsParConseiller(String login) {
-		ArrayList<Client> listeClient = null;
+	public List<Client> lireClientsParConseiller(int id) {
+		List<Client> listeClient = clientDao.getAllCLientByConseiller(id);
 		return listeClient;
 	}
 

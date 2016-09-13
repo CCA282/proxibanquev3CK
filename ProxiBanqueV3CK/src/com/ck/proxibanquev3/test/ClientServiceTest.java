@@ -18,14 +18,6 @@ import com.ck.proxibanquev3.service.ClientService;
 
 public class ClientServiceTest {
 
-	Conseiller conseiller1;
-	Client client1;
-	Client client2;
-	ConseillerDAO conseillerDAO;
-	ClientDAO clientDAO;
-	@Inject
-	private ClientService clientservice;
-
 	@BeforeClass
 	public void setUpBeforeClass() throws Exception {
 //		conseiller1 = new Conseiller("castro", "clement", "cca", "gtm");
@@ -41,6 +33,7 @@ public class ClientServiceTest {
 
 	@Before
 	public void setUp() throws Exception {
+		ClientService clientservice = new ClientService();
 	}
 
 	@After
@@ -48,7 +41,7 @@ public class ClientServiceTest {
 	}
 
 	@Test
-	public void testCreate() {
+	public void testCreerClient() {
 
 		fail("Not yet implemented");
 	}

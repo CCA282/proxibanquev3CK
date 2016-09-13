@@ -267,7 +267,7 @@ public class CompteDAO {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction tx =  em.getTransaction();
 		tx.begin();
-		Query query = em.createQuery("SELECT * FROM COMPTE");
+		Query query = em.createQuery("from Compte");
 		listCompte = query.getResultList();
 		tx.commit();
 		em.close();
