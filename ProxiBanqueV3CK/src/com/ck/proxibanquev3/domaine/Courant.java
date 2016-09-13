@@ -64,6 +64,14 @@ public class Courant extends Compte{
 		super(idCompte);
 		// TODO Auto-generated constructor stub
 	}
+	/**
+	 * Constructeur de la classe Courant
+	 * @param idCompte
+	 */
+	public Courant(double solde) {
+		super(solde);
+		// TODO Auto-generated constructor stub
+	}
 	
 	/**
 	 * Constructeur de la classe Courant

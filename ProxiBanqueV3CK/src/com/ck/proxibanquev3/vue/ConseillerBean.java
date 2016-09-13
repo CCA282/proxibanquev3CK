@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import com.ck.proxibanquev3.domaine.Conseiller;
 
 
 
@@ -23,15 +24,15 @@ public class ConseillerBean implements Serializable {
 	
 	
 
-	private List<Conseillers> conseillers = new ArrayList<Conseillers>() {
+	private List<Conseiller> conseillers = new ArrayList<Conseiller>() {
 		/**
 		* 
 		*/
 		private static final long serialVersionUID = 1L;
 
 		{
-			add(new Conseillers(1, "Douglas", "Mbiandou", "douglas", "mbiandou"));
-			add(new Conseillers(2, "toto", "tata", "toto", "tata"));
+			add(new Conseiller("Douglas", "Mbiandou", "douglas", "mbiandou"));
+			add(new Conseiller("toto", "tata", "toto", "tata"));
 		}
 	};
 
@@ -115,14 +116,14 @@ public class ConseillerBean implements Serializable {
 	/**
 	 * @return the conseillers
 	 */
-	public List<Conseillers> getConseillers() {
+	public List<Conseiller> getConseillers() {
 		return conseillers;
 	}
 
 	/**
 	 * @param conseillers the conseillers to set
 	 */
-	public void setConseillers(List<Conseillers> conseillers) {
+	public void setConseillers(List<Conseiller> conseillers) {
 		this.conseillers = conseillers;
 	}
 

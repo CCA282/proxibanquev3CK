@@ -4,10 +4,20 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.ck.proxibanquev3.dao.ClientDAO;
+import com.ck.proxibanquev3.domaine.Client;
+import com.ck.proxibanquev3.domaine.Conseiller;
+import com.ck.proxibanquev3.domaine.Courant;
+import com.ck.proxibanquev3.domaine.Epargne;
+import com.ck.proxibanquev3.service.ClientService;
+
 
 
 public class ClientBean implements Serializable {
 
+	
+	ClientDAO clientDAO=new ClientDAO();
+	
 	/**
 	 * 
 	 */
@@ -22,6 +32,8 @@ public class ClientBean implements Serializable {
 	private double soldeCC;
 	private int idEpargne;
 	private double soldeCE;
+	private Courant courant;
+	private Epargne epargne;
 
 	private List<Clients> clients = new ArrayList<Clients>() {
 		/**
@@ -194,9 +206,40 @@ public class ClientBean implements Serializable {
 		this.clients = clients;
 	}
 	
+	/**
+	 * @return the courant
+	 */
+	public Courant getCourant() {
+		return courant;
+	}
+
+	/**
+	 * @param courant the courant to set
+	 */
+	public void setCourant(Courant courant) {
+		this.courant = courant;
+	}
+
+	/**
+	 * @return the epargne
+	 */
+	public Epargne getEpargne() {
+		return epargne;
+	}
+
+	/**
+	 * @param epargne the epargne to set
+	 */
+	public void setEpargne(Epargne epargne) {
+		this.epargne = epargne;
+	}
+
 	public String creer(){
-		Clients cl=new Clients(6, this.nom, this.prenom, "3 rue du catch", "Huld@Hogan.com", 1, 25.0, 2, 30.0);
-		this.clients.add(cl);
+		Courant courant=new Courant(0.0);
+		Epargne epargne=new Epargne(0.0);
+		Conseiller conseiller=new Conseiller("Douglas", "Mbiandou", "douglas", "mbiandou");
+		Client cl=new Client(this.nom, this.prenom,this.adresse, this.email, courant, epargne, conseiller);
+		clientDAO.createClient(cl);
 		return "/00listeclients.xhtml";
 	}
 	

@@ -75,6 +75,14 @@ public abstract class Compte {
 		super();
 		this.idCompte = idCompte;
 	}
+	/**
+	 * Constructeur de la classe Compte
+	 * @param idCompte
+	 */
+	public Compte(double solde) {
+		super();
+		this.solde = solde;
+	}
 	
 	/**
 	 * Constructeur de la classe Compte
